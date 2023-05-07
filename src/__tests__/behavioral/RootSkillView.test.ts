@@ -45,7 +45,12 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		})
 
 		await this.eventFaker.fakeGetPerson(() => {})
+		await this.eventFaker.fakeCheckin()
 
+		this.views.setController(
+			'checkin.checkin-confirmation-card',
+			SpyCheckinCard
+		)
 		this.views.setController('active-record-card', SpyActiveRecordCard)
 		this.views.setController('checkin.root', SpyRootViewController)
 
@@ -195,10 +200,15 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 			interactor.clickButton(this.cardVc, 'checkin')
 		)
 
-		vcAssert.assertRendersAsInstanceOf(
+		const checkinVc = vcAssert.assertRendersAsInstanceOf(
 			dlg,
 			CheckinConfirmationCardViewController
-		)
+		) as SpyCheckinCard
+
+		await checkinVc.submitForm()
+
+		assert.isFalse(dlg.getIsVisible())
+		assert.isEqual(checkinVc.getLocationId(), this.locationIds[0])
 	}
 
 	private static async loadAndWaitForGuests() {
@@ -277,5 +287,15 @@ class SpyRootViewController extends RootSkillViewController {
 
 	public setUpdateInterval(intervalMs: number) {
 		this.updateIntervalMs = intervalMs
+	}
+}
+
+class SpyCheckinCard extends CheckinConfirmationCardViewController {
+	public getLocationId() {
+		return this.locationId
+	}
+	public async submitForm() {
+		await this.formVc.setValue('phone', '555-555-5555')
+		await this.formVc.submit()
 	}
 }

@@ -12,7 +12,7 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 	public static id = 'checkin-confirmation-card'
 	private cardVc: CardViewController
 	protected formVc: FormViewController<FormSchema>
-	private locationId: string
+	protected locationId: string
 	private onSuccessHandler: OnSuccesHandler
 
 	public constructor(options: ViewControllerOptions & CheckinCardOptions) {
@@ -78,7 +78,7 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 						locationId: this.locationId,
 					},
 					payload: {
-						phone: '555-555-5555',
+						phone: this.formVc.getValue('phone')!,
 					},
 				}
 			)

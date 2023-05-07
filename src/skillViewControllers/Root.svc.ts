@@ -100,10 +100,10 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 	private async handleClickCheckin() {
 		const vc = this.Controller('checkin.checkin-confirmation-card', {
-			locationId: 'aoeu',
-			onSuccess: () => {},
+			locationId: this.location.id,
+			onSuccess: () => dlgVc.hide(),
 		})
-		this.renderInDialog(vc.render())
+		const dlgVc = this.renderInDialog(vc.render())
 	}
 
 	public async waitForGuests() {

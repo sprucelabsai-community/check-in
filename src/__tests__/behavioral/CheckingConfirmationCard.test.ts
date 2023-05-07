@@ -53,23 +53,29 @@ export default class CheckingConfirmationCardTest extends AbstractCheckinTest {
 		assert.isFalse(this.formVc.getShouldRenderCancelButton())
 	}
 
-	@test()
-	protected static async failingASubmitRendersAlertsWithPropertTargetAndPayload() {
-		let wasHit = false
+	@test('fail renders alert 1', '555-555-5555')
+	@test('fail renders alert 2', '555-555-6666')
+	protected static async failingASubmitRendersAlertsWithPropertTargetAndPayload(
+		phone: string
+	) {
 		let passedTarget: CheckinTargetAndPayload['target'] | undefined
+		let passedPayload: CheckinTargetAndPayload['payload'] | undefined
 
-		await this.eventFaker.fakeCheckin(({ target }) => {
+		await this.eventFaker.fakeCheckin(({ target, payload }) => {
 			passedTarget = target
-			wasHit = true
+			passedPayload = payload
 			assert.fail('nooo!!')
 		})
 
-		await this.setPhone()
+		await this.setPhone(phone)
 		await vcAssert.assertRendersAlert(this.vc, () => this.submit())
 
-		assert.isTrue(wasHit)
 		assert.isEqualDeep(passedTarget, {
 			locationId: this.locationIds[0],
+		})
+
+		assert.isEqualDeep(passedPayload, {
+			phone,
 		})
 
 		this.assertOnSuccesNotInvoked()
@@ -77,12 +83,14 @@ export default class CheckingConfirmationCardTest extends AbstractCheckinTest {
 
 	@test()
 	protected static async sucssessOnSuccess() {
+		await this.setPhone()
 		await vcAssert.assertRendersSuccessAlert(this.vc, () => this.submit())
 	}
 
 	@test()
 	protected static async successInvokesOnSubmit() {
 		this.assertOnSuccesNotInvoked()
+		await this.setPhone()
 		const alertVc = await vcAssert.assertRendersSuccessAlert(this.vc, () =>
 			this.submit()
 		)
@@ -99,8 +107,8 @@ export default class CheckingConfirmationCardTest extends AbstractCheckinTest {
 		return interactor.submitForm(this.formVc)
 	}
 
-	private static async setPhone() {
-		await this.formVc.setValue('phone', '555-555-5555')
+	private static async setPhone(phone?: string) {
+		await this.formVc.setValue('phone', phone ?? '555-555-5555')
 	}
 
 	private static get formVc() {
