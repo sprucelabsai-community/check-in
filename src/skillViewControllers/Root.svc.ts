@@ -122,8 +122,8 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 		await this.loadActiveRecordCard()
 
-		this.interval = setInterval(() => {
-			this.refresh()
+		this.interval = setInterval(async () => {
+			await this.refresh()
 		}, this.updateIntervalMs)
 	}
 
@@ -135,9 +135,9 @@ export default class RootSkillViewController extends AbstractSkillViewController
 		await this.activeCardVc.load()
 	}
 
-	private refresh() {
+	private async refresh() {
 		this.activeCardVc.setPayload(this.buildPayload())
-		this.activeCardVc.refresh()
+		await this.activeCardVc.refresh()
 	}
 
 	public async destroy(): Promise<void> {
