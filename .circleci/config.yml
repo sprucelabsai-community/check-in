@@ -18,7 +18,7 @@ jobs:
       - spruce/install_cli
       - spruce/setup_testing:
           demoNumber: $DEMO_NUMBER
-          skillSlug: help
+          skillSlug: checkin
       - spruce/check_skill_boot_with_prod_dependencies
       - spruce/exit_if_not_auto_upgrade
       - spruce/merge_auto_upgrade
