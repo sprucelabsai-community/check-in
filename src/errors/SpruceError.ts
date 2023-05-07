@@ -7,6 +7,10 @@ export default class SpruceError extends AbstractSpruceError<ErrorOptions> {
 		let message
 
 		switch (options?.code) {
+			case 'NO_UPCOMING_APPOINTMENTS':
+				message = `Well shoot! I could not find any upcoming appointments for you!! Ask a human for help!`
+				break
+
 			default:
 				message = super.friendlyMessage()
 		}

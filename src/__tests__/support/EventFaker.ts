@@ -26,6 +26,41 @@ export default class EventFaker {
 		)
 	}
 
+	public async fakeUpdateAppointment(
+		cb?: (targetAndPayload: UpdateAppointmentTargetAndPayload) => void
+	) {
+		await eventFaker.on(
+			'appointments.update::v2021_06_23',
+			(targetAndPayload) => {
+				cb?.(targetAndPayload)
+				return {
+					appointment: this.generateListAppointmentValues({
+						locationId: generateId(),
+						organizationId: generateId(),
+					}),
+				}
+			}
+		)
+	}
+
+	public async fakeSendMessage(
+		cb?: (targetAndPayload: SendMessageTargetAndPayload) => void
+	) {
+		await eventFaker.on('send-message::v2020_12_25', (targetAndPayload) => {
+			cb?.(targetAndPayload)
+			return {
+				message: {
+					body: generateId(),
+					classification: 'auth' as const,
+					dateCreated: new Date().getTime(),
+					id: generateId(),
+					source: {},
+					target: {},
+				},
+			}
+		})
+	}
+
 	public generateBookedServiceValues(values: {
 		organizationId: string
 		locationId: string
@@ -60,7 +95,6 @@ export default class EventFaker {
 			id: generateId(),
 			dateCreated: new Date().getTime(),
 			statuses: [],
-
 			services: new Array(totalServices)
 				.fill(0)
 				.map(() => this.generateBookedServiceValues(values)),
@@ -107,3 +141,9 @@ export type GetPersonTargetAndPayload =
 
 export type CheckinTargetAndPayload =
 	SpruceSchemas.Checkin.v2023_05_07.CheckinEmitTargetAndPayload
+
+export type SendMessageTargetAndPayload =
+	SpruceSchemas.Mercury.v2020_12_25.SendMessageEmitTargetAndPayload
+
+export type UpdateAppointmentTargetAndPayload =
+	SpruceSchemas.Appointments.v2021_06_23.UpdateEmitTargetAndPayload

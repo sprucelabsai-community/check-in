@@ -21,37 +21,17 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 			'locationId',
 			'onSuccess',
 		])
+
 		this.locationId = locationId
 		this.onSuccessHandler = onSuccess
 
-		this.formVc = this.Controller(
-			'form',
-			buildForm({
-				id: 'checkin',
-				schema: formSchema,
-				sections: [
-					{
-						fields: ['phone'],
-					},
-				],
-				shouldShowCancelButton: false,
-				onSubmit: this.handleSubmit.bind(this),
-			})
-		)
+		this.formVc = this.FormVc()
+		this.cardVc = this.CardVc()
+	}
 
-		const vc = this.Controller('talking-sprucebot', {
-			avatar: {
-				size: 'medium',
-				stateOfMind: 'contemplative',
-			},
-			sentences: [
-				{
-					words: `Enter the number you used to book!`,
-				},
-			],
-		})
-
-		this.cardVc = this.Controller('card', {
+	private CardVc(): CardViewController {
+		const vc = this.TalkingSprucebot()
+		return this.Controller('card', {
 			header: {
 				title: 'Confirm your number',
 			},
@@ -66,6 +46,40 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 				],
 			},
 		})
+	}
+
+	private TalkingSprucebot() {
+		return this.Controller('talking-sprucebot', {
+			avatar: {
+				size: 'medium',
+				stateOfMind: 'contemplative',
+			},
+			sentences: [
+				{
+					words: `Enter the number you used to book!`,
+				},
+			],
+		})
+	}
+
+	private FormVc(): FormViewController<{
+		id: string
+		fields: { phone: { type: 'phone'; isRequired: true } }
+	}> {
+		return this.Controller(
+			'form',
+			buildForm({
+				id: 'checkin',
+				schema: formSchema,
+				sections: [
+					{
+						fields: ['phone'],
+					},
+				],
+				shouldShowCancelButton: false,
+				onSubmit: this.handleSubmit.bind(this),
+			})
+		)
 	}
 
 	private async handleSubmit() {

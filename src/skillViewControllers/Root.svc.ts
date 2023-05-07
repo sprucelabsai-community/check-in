@@ -52,7 +52,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 					)
 				},
 				header: {
-					title: 'Checkin below! 👇',
+					title: 'Upcoming appointments 👇',
 				},
 				noResultsRow: {
 					height: 'content',
@@ -137,7 +137,6 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 	private async refresh() {
 		this.activeCardVc.setPayload(this.buildPayload())
-		console.log('refreshing')
 		await this.activeCardVc.refresh()
 	}
 

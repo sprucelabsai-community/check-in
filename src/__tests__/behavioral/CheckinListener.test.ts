@@ -13,6 +13,16 @@ export default class CheckinListenerTest extends AbstractCheckinTest {
 		const { skill } = await this.bootSkill()
 		this.skill = skill
 		this.locationId = generateId()
+
+		await this.eventFaker.fakeUpdateAppointment()
+		await this.eventFaker.fakeGetPerson()
+		await this.eventFaker.fakeSendMessage()
+		await this.eventFaker.fakeListAppointments(() => [
+			this.eventFaker.generateListAppointmentValues({
+				locationId: this.locationId,
+				organizationId: generateId(),
+			}),
+		])
 	}
 
 	@test()

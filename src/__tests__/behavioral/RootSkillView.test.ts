@@ -86,17 +86,9 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 			locationId: this.locationIds[0],
 		})
 
-		assert.isBelow(this.passedPayload?.afterDateTimeMs, this.minutesFromNow(-9))
-		assert.isAbove(
-			this.passedPayload?.afterDateTimeMs,
-			this.minutesFromNow(-16)
+		this.support.assertUpcomingAppointmentstPayloadRangeIsGood(
+			this.passedPayload
 		)
-
-		assert.isBelow(
-			this.passedPayload?.beforeDateTimeMs,
-			this.minutesFromNow(11)
-		)
-		assert.isAbove(this.passedPayload?.beforeDateTimeMs, this.minutesFromNow(9))
 	}
 
 	@test()
@@ -229,18 +221,10 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		return appointment
 	}
 
-	private static get organizationIds() {
-		return this.fakedOrganizations.map((l) => l.id)
-	}
-
 	private static async waitAndAssertPayloadChanged() {
 		const lastPayload = this.passedPayload
 		await this.wait(100)
 		assert.isNotEqualDeep(this.passedPayload, lastPayload)
-	}
-
-	private static minutesFromNow(minutes: number): number | null | undefined {
-		return dateUtil.addMinutes(new Date().getTime(), minutes)
 	}
 
 	private static async load() {
