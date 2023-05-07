@@ -95,12 +95,9 @@ import appointmentsUpdateRoleCapabilityEventContract_v2021_06_23, {
 import appointmentsUpdateServiceEventContract_v2021_06_23, {
 	UpdateServiceEventContract as AppointmentsUpdateServiceEventContract_v2021_06_23,
 } from '#spruce/events/appointments/updateService.v2021_06_23.contract'
-import appointmentsWillSendConfirmationEventContract_v2021_06_23, {
-	WillSendConfirmationEventContract as AppointmentsWillSendConfirmationEventContract_v2021_06_23,
-} from '#spruce/events/appointments/willSendConfirmation.v2021_06_23.contract'
-import checkinGetGuestEventContract_v2023_05_07, {
-	GetGuestEventContract as CheckinGetGuestEventContract_v2023_05_07,
-} from '#spruce/events/checkin/getGuest.v2023_05_07.contract'
+import appointmentsWillSendConfirmationEventContract_v2021_06_23, { WillSendConfirmationEventContract as AppointmentsWillSendConfirmationEventContract_v2021_06_23  } from '#spruce/events/appointments/willSendConfirmation.v2021_06_23.contract'
+import checkinCheckinEventContract_v2023_05_07, { CheckinEventContract as CheckinCheckinEventContract_v2023_05_07  } from '#spruce/events/checkin/checkin.v2023_05_07.contract'
+import checkinGetGuestEventContract_v2023_05_07, { GetGuestEventContract as CheckinGetGuestEventContract_v2023_05_07  } from '#spruce/events/checkin/getGuest.v2023_05_07.contract'
 import heartwoodDidRegisterSkillViewsEventContract_v2021_02_11, {
 	DidRegisterSkillViewsEventContract as HeartwoodDidRegisterSkillViewsEventContract_v2021_02_11,
 } from '#spruce/events/heartwood/didRegisterSkillViews.v2021_02_11.contract'
@@ -110,25 +107,16 @@ import heartwoodGenerateUrlEventContract_v2021_02_11, {
 import heartwoodGetActiveThemeEventContract_v2021_02_11, {
 	GetActiveThemeEventContract as HeartwoodGetActiveThemeEventContract_v2021_02_11,
 } from '#spruce/events/heartwood/getActiveTheme.v2021_02_11.contract'
-import heartwoodGetSkillViewsEventContract_v2021_02_11, {
-	GetSkillViewsEventContract as HeartwoodGetSkillViewsEventContract_v2021_02_11,
-} from '#spruce/events/heartwood/getSkillViews.v2021_02_11.contract'
-import heartwoodListViewsEventContract_v2021_02_11, {
-	ListViewsEventContract as HeartwoodListViewsEventContract_v2021_02_11,
-} from '#spruce/events/heartwood/listViews.v2021_02_11.contract'
-import heartwoodRegisterDashboardCardsEventContract_v2021_02_11, {
-	RegisterDashboardCardsEventContract as HeartwoodRegisterDashboardCardsEventContract_v2021_02_11,
-} from '#spruce/events/heartwood/registerDashboardCards.v2021_02_11.contract'
-import heartwoodRegisterSkillViewsEventContract_v2021_02_11, {
-	RegisterSkillViewsEventContract as HeartwoodRegisterSkillViewsEventContract_v2021_02_11,
-} from '#spruce/events/heartwood/registerSkillViews.v2021_02_11.contract'
-import heartwoodUpsertThemeEventContract_v2021_02_11, {
-	UpsertThemeEventContract as HeartwoodUpsertThemeEventContract_v2021_02_11,
-} from '#spruce/events/heartwood/upsertTheme.v2021_02_11.contract'
+import heartwoodGetSkillViewsEventContract_v2021_02_11, { GetSkillViewsEventContract as HeartwoodGetSkillViewsEventContract_v2021_02_11  } from '#spruce/events/heartwood/getSkillViews.v2021_02_11.contract'
+import heartwoodListViewsEventContract_v2021_02_11, { ListViewsEventContract as HeartwoodListViewsEventContract_v2021_02_11  } from '#spruce/events/heartwood/listViews.v2021_02_11.contract'
+import heartwoodRegisterDashboardCardsEventContract_v2021_02_11, { RegisterDashboardCardsEventContract as HeartwoodRegisterDashboardCardsEventContract_v2021_02_11  } from '#spruce/events/heartwood/registerDashboardCards.v2021_02_11.contract'
+import heartwoodRegisterSkillViewsEventContract_v2021_02_11, { RegisterSkillViewsEventContract as HeartwoodRegisterSkillViewsEventContract_v2021_02_11  } from '#spruce/events/heartwood/registerSkillViews.v2021_02_11.contract'
+import heartwoodUpsertThemeEventContract_v2021_02_11, { UpsertThemeEventContract as HeartwoodUpsertThemeEventContract_v2021_02_11  } from '#spruce/events/heartwood/upsertTheme.v2021_02_11.contract'
 
 export default [
 	appointmentsBookEventContract_v2021_06_23,
 	appointmentsCancelHoldEventContract_v2021_06_23,
+	checkinCheckinEventContract_v2023_05_07,
 	appointmentsCreateEventContract_v2021_06_23,
 	appointmentsCreateCategoryEventContract_v2021_06_23,
 	appointmentsCreateHoldEventContract_v2021_06_23,
@@ -177,6 +165,8 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'appointments.book::v2021_06_23': AppointmentsBookEventContract_v2021_06_23['eventSignatures']['appointments.book::v2021_06_23']
 
 		'appointments.cancel-hold::v2021_06_23': AppointmentsCancelHoldEventContract_v2021_06_23['eventSignatures']['appointments.cancel-hold::v2021_06_23']
+
+		'checkin.checkin::v2023_05_07': CheckinCheckinEventContract_v2023_05_07['eventSignatures']['checkin.checkin::v2023_05_07']
 
 		'appointments.create::v2021_06_23': AppointmentsCreateEventContract_v2021_06_23['eventSignatures']['appointments.create::v2021_06_23']
 

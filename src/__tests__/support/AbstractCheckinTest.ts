@@ -7,4 +7,8 @@ export default abstract class AbstractCheckinTest extends AbstractSpruceFixtureT
 		await super.beforeEach()
 		this.eventFaker = new EventFaker({ fakedPerson: this.fakedPerson })
 	}
+
+	protected static get locationIds() {
+		return this.fakedLocations.map((l) => l.id)
+	}
 }

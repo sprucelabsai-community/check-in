@@ -1,20 +1,19 @@
 import { dateUtil } from '@sprucelabs/calendar-utils'
 import {
 	ActiveRecordCardViewController,
+	buttonAssert,
 	interactor,
 	listAssert,
 	vcAssert,
 } from '@sprucelabs/heartwood-view-controllers'
-import { Person } from '@sprucelabs/spruce-core-schemas'
 import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
-import { test, assert, generateId } from '@sprucelabs/test-utils'
+import { test, assert } from '@sprucelabs/test-utils'
 import { ListAppointment } from '../../checkin.types'
 import RootSkillViewController from '../../skillViewControllers/Root.svc'
 import CheckinConfirmationCardViewController from '../../viewControllers/CheckinConfirmationCard.vc'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
 import {
 	GenerateListAppointmentValuesOptions,
-	GetPersonTargetAndPayload,
 	ListAppointmentsTargetAndPayload,
 } from '../support/EventFaker'
 
@@ -71,7 +70,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	@test()
 	protected static async activeRecordCardIsLoadedWhenLoadingVc() {
 		await this.load()
-		assert.isTrue(this.vc.getActiveCardVc().getIsLoaded())
+		assert.isTrue(this.cardVc.getIsLoaded())
 	}
 
 	@test()
@@ -105,13 +104,17 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	}
 
 	@test()
-	protected static async appointentRowHasCheckinButton() {
+	protected static async aRowForAppointments() {
 		const appointment = this.addFakeAppointment()
 
 		await this.load()
 
 		listAssert.listRendersRow(this.listVc, appointment.id)
-		listAssert.rowRendersButton(this.listVc, 0, 'checkin')
+	}
+
+	@test()
+	protected static async checkinButtonOnCard() {
+		buttonAssert.cardRendersButton(this.cardVc, 'checkin')
 	}
 
 	@test()
@@ -158,61 +161,28 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	}
 
 	@test()
-	protected static async triesToLoadCorrectGuest() {
-		let passedTarget: GetPersonTargetAndPayload['target'] | undefined
-
-		await this.eventFaker.fakeGetPerson(({ target }) => {
-			passedTarget = target
-		})
-
-		const {
-			target: { guestId },
-		} = this.addFakeAppointment()
-
-		await this.load()
-
-		assert.isEqualDeep(passedTarget, {
-			personId: guestId,
-			locationId: this.locationIds[0],
-		})
-	}
-
-	@test()
-	protected static async guestNameShouldBeInRow() {
-		this.addFakeAppointment()
+	protected static async privaderNameShouldBeInRow() {
+		const appointment = this.addFakeAppointment()
 		await RootSkillViewTest.loadAndWaitForGuests()
 
-		this.assertFirtRowRendersContent(this.fakedPerson.casualName)
+		this.assertFirtRowRendersContent(appointment.services[0].providerCasualName)
 	}
 
 	@test()
-	protected static async matchesTheGuestToTheAppointment() {
+	protected static async matchesTheProviderToTheAppointment() {
 		const {
 			id,
-			target: { guestId: guestId1 },
+			services: [{ providerCasualName }],
 		} = this.addFakeAppointment()
 		const {
 			id: id2,
-			target: { guestId: guestId2 },
+			services: [{ providerCasualName: providerCasualName2 }],
 		} = this.addFakeAppointment()
-
-		const name2 = generateId()
-		const map: Record<string, Person> = {
-			[guestId1!]: this.fakedPerson,
-			[guestId2!]: {
-				...this.fakedPerson,
-				casualName: name2,
-			},
-		}
-
-		await this.eventFaker.fakeGetPerson(({ target }) => {
-			return map[target!.personId!]
-		})
 
 		await this.loadAndWaitForGuests()
 
-		this.assertRowRendersContent(id, this.fakedPerson.casualName)
-		this.assertRowRendersContent(id2, name2)
+		this.assertRowRendersContent(id, providerCasualName)
+		this.assertRowRendersContent(id2, providerCasualName2)
 	}
 
 	@test()
@@ -222,7 +192,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		await this.load()
 
 		const dlg = await vcAssert.assertRendersDialog(this.vc, () =>
-			interactor.clickButtonInRow(this.listVc, 0, 'checkin')
+			interactor.clickButton(this.cardVc, 'checkin')
 		)
 
 		vcAssert.assertRendersAsInstanceOf(
@@ -247,10 +217,6 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 
 		this.fakedAppointments.push(appointment)
 		return appointment
-	}
-
-	private static get locationIds() {
-		return this.fakedLocations.map((l) => l.id)
 	}
 
 	private static get organizationIds() {
@@ -284,6 +250,10 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		name: string
 	) {
 		listAssert.rowRendersContent(this.listVc, idOrIdx, name)
+	}
+
+	private static get cardVc() {
+		return this.vc.getActiveCardVc()
 	}
 }
 

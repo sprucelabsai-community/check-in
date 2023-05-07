@@ -80,6 +80,17 @@ export default class EventFaker {
 			}
 		})
 	}
+
+	public async fakeCheckin(
+		cb?: (targetAndPayload: CheckinTargetAndPayload) => void
+	) {
+		await eventFaker.on('checkin.checkin::v2023_05_07', (targetAndPayload) => {
+			cb?.(targetAndPayload)
+			return {
+				providerName: 'Test Provider',
+			}
+		})
+	}
 }
 export type ListAppointmentsTargetAndPayload =
 	SpruceSchemas.Appointments.v2021_06_23.ListEmitTargetAndPayload
@@ -93,3 +104,6 @@ export interface GenerateListAppointmentValuesOptions {
 
 export type GetPersonTargetAndPayload =
 	SpruceSchemas.Mercury.v2020_12_25.GetPersonEmitTargetAndPayload
+
+export type CheckinTargetAndPayload =
+	SpruceSchemas.Checkin.v2023_05_07.CheckinEmitTargetAndPayload

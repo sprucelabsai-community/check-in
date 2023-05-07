@@ -25,6 +25,16 @@ const checkinPermissions = buildPermissionContract({
 			},
 			requireAllStatuses: false,
 		},
+		{
+			id: 'can-checkin-self',
+			name: 'Can check in by their own number',
+			defaults: {
+				loggedIn: {
+					default: true,
+				},
+			},
+			requireAllStatuses: false,
+		},
 	],
 })
 

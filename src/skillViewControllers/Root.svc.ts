@@ -8,7 +8,7 @@ import {
 	ViewControllerOptions,
 	buildActiveRecordCard,
 } from '@sprucelabs/heartwood-view-controllers'
-import { Location, Person } from '@sprucelabs/spruce-core-schemas'
+import { Location } from '@sprucelabs/spruce-core-schemas'
 import { ListAppointment } from '../checkin.types'
 
 export default class RootSkillViewController extends AbstractSkillViewController {
@@ -36,6 +36,16 @@ export default class RootSkillViewController extends AbstractSkillViewController
 				rowTransformer: this.renderRow.bind(this),
 				responseKey: 'appointments',
 				columnWidths: ['fill'],
+				footer: {
+					buttons: [
+						{
+							id: 'checkin',
+							label: 'Checkin now!!',
+							type: 'primary',
+							onClick: this.handleClickCheckin.bind(this),
+						},
+					],
+				},
 				filter: (appointment: ListAppointment) => {
 					return !!(
 						appointment.services.length > 0 && appointment.target.guestId
@@ -58,7 +68,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 		)
 	}
 
-	private renderRow(appointment: ListAppointment, guest?: Person): ListRow {
+	private renderRow(appointment: ListAppointment): ListRow {
 		const services = appointment.services
 		const names: string[] = []
 
@@ -71,14 +81,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 		let title = names.join(', ')
 
 		const startMs = services[0].startDateTimeMs
-		title += ` @ ${this.dates.formatTime(startMs)} w/ ${firstProvider}`
-
-		let subText: string | undefined
-		if (guest) {
-			subText = guest.casualName
-		} else {
-			this.guestLoadPromises.push(this.loadGuest(appointment))
-		}
+		title += ` @ ${this.dates.formatTime(startMs)}`
 
 		return {
 			id: appointment.id,
@@ -88,15 +91,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 						content: title,
 					},
 					subText: {
-						content: subText,
-					},
-				},
-				{
-					button: {
-						id: 'checkin',
-						label: 'Checkin',
-						type: 'primary',
-						onClick: () => this.handleClickCheckin(),
+						content: `w/ ${firstProvider}`,
 					},
 				},
 			],
@@ -104,7 +99,10 @@ export default class RootSkillViewController extends AbstractSkillViewController
 	}
 
 	private async handleClickCheckin() {
-		const vc = this.Controller('checkin.checkin-confirmation-card', {})
+		const vc = this.Controller('checkin.checkin-confirmation-card', {
+			locationId: 'aoeu',
+			onSuccess: () => {},
+		})
 		this.renderInDialog(vc.render())
 	}
 
@@ -127,24 +125,6 @@ export default class RootSkillViewController extends AbstractSkillViewController
 		this.interval = setInterval(() => {
 			this.refresh()
 		}, this.updateIntervalMs)
-	}
-
-	private async loadGuest(appointment: ListAppointment) {
-		const client = await this.connectToApi()
-		const [{ person }] = await client.emitAndFlattenResponses(
-			'get-person::v2020_12_25',
-			{
-				target: {
-					personId: appointment.target.guestId!,
-					locationId: this.location.id,
-				},
-			}
-		)
-
-		this.activeCardVc.upsertRow(
-			appointment.id,
-			this.renderRow(appointment, person)
-		)
 	}
 
 	private async loadActiveRecordCard() {
