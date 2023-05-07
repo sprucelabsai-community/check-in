@@ -21,6 +21,9 @@
     }
   ],
   "events": {
-    "lastSync": {}
+    "lastSync": {},
+    "listenerCacheKeys": {
+      "http1270018081": "getguestcheckinv2023_05_07"
+    }
   }
 }

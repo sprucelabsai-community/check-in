@@ -98,6 +98,9 @@ import appointmentsUpdateServiceEventContract_v2021_06_23, {
 import appointmentsWillSendConfirmationEventContract_v2021_06_23, {
 	WillSendConfirmationEventContract as AppointmentsWillSendConfirmationEventContract_v2021_06_23,
 } from '#spruce/events/appointments/willSendConfirmation.v2021_06_23.contract'
+import checkinGetGuestEventContract_v2023_05_07, {
+	GetGuestEventContract as CheckinGetGuestEventContract_v2023_05_07,
+} from '#spruce/events/checkin/getGuest.v2023_05_07.contract'
 import heartwoodDidRegisterSkillViewsEventContract_v2021_02_11, {
 	DidRegisterSkillViewsEventContract as HeartwoodDidRegisterSkillViewsEventContract_v2021_02_11,
 } from '#spruce/events/heartwood/didRegisterSkillViews.v2021_02_11.contract'
@@ -141,6 +144,7 @@ export default [
 	heartwoodGetActiveThemeEventContract_v2021_02_11,
 	appointmentsGetAvailableTimesEventContract_v2021_06_23,
 	appointmentsGetCategoryEventContract_v2021_06_23,
+	checkinGetGuestEventContract_v2023_05_07,
 	appointmentsGetOrganizationSettingsEventContract_v2021_06_23,
 	appointmentsGetServiceEventContract_v2021_06_23,
 	heartwoodGetSkillViewsEventContract_v2021_02_11,
@@ -203,6 +207,8 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'appointments.get-available-times::v2021_06_23': AppointmentsGetAvailableTimesEventContract_v2021_06_23['eventSignatures']['appointments.get-available-times::v2021_06_23']
 
 		'appointments.get-category::v2021_06_23': AppointmentsGetCategoryEventContract_v2021_06_23['eventSignatures']['appointments.get-category::v2021_06_23']
+
+		'checkin.get-guest::v2023_05_07': CheckinGetGuestEventContract_v2023_05_07['eventSignatures']['checkin.get-guest::v2023_05_07']
 
 		'appointments.get-organization-settings::v2021_06_23': AppointmentsGetOrganizationSettingsEventContract_v2021_06_23['eventSignatures']['appointments.get-organization-settings::v2021_06_23']
 
