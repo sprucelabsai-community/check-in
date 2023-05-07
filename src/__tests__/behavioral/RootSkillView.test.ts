@@ -26,7 +26,11 @@ export default class RootSkillViewTest extends AbstractSpruceFixtureTest {
 
 	@test()
 	protected static async loadsUpcomingAppointments() {
-		await eventFaker.on('app')
+		await eventFaker.on('appointments.list::v2021_06_23', () => {
+			return {
+				appointments: [],
+			}
+		})
 	}
 }
 

@@ -38,6 +38,7 @@
     "watch.tsc": "tsc -w"
   },
   "dependencies": {
+    "@sprucelabs/calendar-utils": "^36.0.7",
     "@sprucelabs/error": "^5.0.608",
     "@sprucelabs/globby": "^1.0.1",
     "@sprucelabs/heartwood-view-controllers": "^103.0.10",

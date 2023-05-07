@@ -17,7 +17,10 @@ export default class RootSkillViewController extends AbstractSkillViewController
 			buildActiveRecordCard({
 				id: 'appointments',
 				eventName: 'list-roles::v2020_12_25',
-				rowTransformer: () => {},
+				rowTransformer: () => ({
+					id: '123',
+					cells: [],
+				}),
 				responseKey: 'roles',
 			})
 		)
