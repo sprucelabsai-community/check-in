@@ -101,7 +101,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 
 	@test()
 	protected static async updatesOnInterval() {
-		assert.isEqual(this.vc.getUpdateInterval(), 1000 * 60 * 5)
+		assert.isEqual(this.vc.getUpdateInterval(), 1000 * 60 * 1)
 		this.vc.setUpdateInterval(100)
 		await this.load()
 		await this.waitAndAssertPayloadChanged()

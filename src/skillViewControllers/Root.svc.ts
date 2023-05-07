@@ -14,7 +14,7 @@ import { ListAppointment } from '../checkin.types'
 export default class RootSkillViewController extends AbstractSkillViewController {
 	public static id = 'root'
 	protected activeCardVc: ActiveRecordCardViewController
-	protected updateIntervalMs = 1000 * 60 * 5
+	protected updateIntervalMs = 1000 * 60 * 1
 	protected interval?: any
 	private location!: Location
 	private guestLoadPromises: Promise<void>[] = []
@@ -137,6 +137,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 	private async refresh() {
 		this.activeCardVc.setPayload(this.buildPayload())
+		console.log('refreshing')
 		await this.activeCardVc.refresh()
 	}
 
