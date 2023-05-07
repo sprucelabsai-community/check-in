@@ -3652,6 +3652,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			
 				
 				'locationId'?: string| undefined | null
+				
+				'guestId'?: string| undefined | null
 		}
 
 		interface ListEmitTargetSchema extends SpruceSchema.Schema {
@@ -3662,6 +3664,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			    fields: {
 			            /** . */
 			            'locationId': {
+			                type: 'id',
+			                options: undefined
+			            },
+			            /** . */
+			            'guestId': {
 			                type: 'id',
 			                options: undefined
 			            },
