@@ -112,7 +112,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 	private buildPayload() {
 		return {
-			afterDateTimeMs: this.dates.addMinutes(this.dates.date(), -10),
+			afterDateTimeMs: this.dates.addMinutes(this.dates.date(), -15),
 			beforeDateTimeMs: this.dates.addMinutes(this.dates.date(), 10),
 		}
 	}

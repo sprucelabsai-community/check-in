@@ -89,7 +89,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		assert.isBelow(this.passedPayload?.afterDateTimeMs, this.minutesFromNow(-9))
 		assert.isAbove(
 			this.passedPayload?.afterDateTimeMs,
-			this.minutesFromNow(-11)
+			this.minutesFromNow(-16)
 		)
 
 		assert.isBelow(
