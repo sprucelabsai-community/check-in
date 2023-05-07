@@ -8,33 +8,37 @@ import {
 
 export default class RootSkillViewController extends AbstractSkillViewController {
 	public static id = 'root'
-	protected cardVc: ActiveRecordCardViewController
+	protected activeCardVc: ActiveRecordCardViewController
 
 	public constructor(options: ViewControllerOptions) {
 		super(options)
-		this.cardVc = this.Controller(
+		this.activeCardVc = this.ActiveCardVc()
+	}
+
+	private ActiveCardVc(): ActiveRecordCardViewController {
+		return this.Controller(
 			'active-record-card',
 			buildActiveRecordCard({
 				id: 'appointments',
-				eventName: 'list-roles::v2020_12_25',
+				eventName: 'appointments.list::v2021_06_23',
 				rowTransformer: () => ({
 					id: '123',
 					cells: [],
 				}),
-				responseKey: 'roles',
+				responseKey: 'appointments',
 			})
 		)
 	}
 
 	public async load() {
-		await this.cardVc.load()
+		await this.activeCardVc.load()
 	}
 
 	public render(): SkillView {
 		return {
 			layouts: [
 				{
-					cards: [this.cardVc.render()],
+					cards: [this.activeCardVc.render()],
 				},
 			],
 		}
