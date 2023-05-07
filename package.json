@@ -5,19 +5,18 @@
   "skill": {
     "namespace": "checkin"
   },
-  "homepage": "https://github.com/[YOUR REPO PATH]",
+  "homepage": "https://github.com/spruce-community/spruce-checkin-skill",
   "bugs": {
-    "url": "https://github.com/[YOUR REPO PATH]/issues"
+    "url": "https://github.com/spruce-community/spruce-checkin-skill/issues"
   },
   "keywords": [],
   "scripts": {
     "boot": "node build/index",
     "boot.local": "node -r ts-node/register -r tsconfig-paths/register ./src/index",
-    "health": "yarn boot --health",
-    "health.local": "yarn boot.local --health",
     "build.ci": "yarn build.tsc && yarn build.resolve-paths && yarn lint",
-    "build.dev": "yarn build.tsc --sourceMap ; yarn resolve-paths.lint",
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
+    "build.dev": "yarn build.tsc --sourceMap ; yarn resolve-paths.lint",
+    "build.dist": "yarn build.tsc && yarn build.resolve-paths",
     "build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
     "build.tsc": "yarn build.copy-files && tsc",
     "clean": "yarn clean.build",
@@ -25,13 +24,17 @@
     "clean.build": "rm -rf build/",
     "clean.dependencies": "rm -rf node_modules/ package-lock.json yarn.lock",
     "fix.lint": "eslint --fix --cache '**/*.ts'",
+    "health": "yarn boot --health",
+    "health.local": "yarn boot.local --health",
+    "heroku-postbuild": "yarn build.dev",
     "lint": "eslint --cache '**/*.ts'",
     "lint.tsc": "tsc -p . --noEmit",
     "post.watch.build": "yarn build.copy-files && yarn build.resolve-paths",
     "rebuild": "yarn clean.all && yarn && yarn build.dev",
-    "update.dependencies": "yarn clean.dependencies && yarn",
+    "release": "semantic-release",
     "resolve-paths.lint": "yarn build.resolve-paths ; yarn lint",
     "test": "jest",
+    "update.dependencies": "yarn clean.dependencies && yarn",
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn post.watch.build'",
     "watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\"",
     "watch.rebuild": "yarn clean.all && yarn && yarn watch.build.dev",
@@ -57,7 +60,9 @@
   },
   "devDependencies": {
     "@sprucelabs/jest-json-reporter": "^7.0.37",
+    "@sprucelabs/jest-sheets-reporter": "^3.0.15",
     "@sprucelabs/resolve-path-aliases": "^1.1.219",
+    "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/spruce-test-fixtures": "^58.0.5",
     "@sprucelabs/test": "^7.7.447",
     "@sprucelabs/test-utils": "^3.4.51",
