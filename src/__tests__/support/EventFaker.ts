@@ -16,5 +16,5 @@ export default class EventFaker {
 		)
 	}
 }
-type ListAppointmentsTargetAndPayload =
+export type ListAppointmentsTargetAndPayload =
 	SpruceSchemas.Appointments.v2021_06_23.ListEmitTargetAndPayload
