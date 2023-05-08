@@ -55,6 +55,21 @@ export default class CheckinAgent {
 		const appointment = appointments[0]
 		const service = appointment.services[0]
 
+		const [{ url }] = await this.client.emitAndFlattenResponses(
+			'heartwood.generate-url::v2021_02_11',
+			{
+				target: {
+					skillViewId: 'feed.root',
+				},
+				payload: {
+					args: {
+						scopedLocationId: locationId,
+						personId: person.id,
+					},
+				},
+			}
+		)
+
 		await this.client.emitAndFlattenResponses('send-message::v2020_12_25', {
 			target: {
 				locationId,
@@ -64,6 +79,12 @@ export default class CheckinAgent {
 				message: {
 					body: `Hey ${service.providerCasualName}! ${person.casualName} is here for their ${service.serviceName}!`,
 					classification: 'transactional',
+					links: [
+						{
+							label: `${person.casualName}'s Feed`,
+							uri: url,
+						},
+					],
 				},
 			},
 		})

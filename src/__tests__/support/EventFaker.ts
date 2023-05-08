@@ -61,6 +61,19 @@ export default class EventFaker {
 		})
 	}
 
+	public async fakeGenerateUrl(
+		cb?: (targetAndPayload: GenerateUrlTargetAndPayload) => void | string
+	) {
+		await eventFaker.on(
+			'heartwood.generate-url::v2021_02_11',
+			(targetAndPayload) => {
+				return {
+					url: cb?.(targetAndPayload) ?? generateId(),
+				}
+			}
+		)
+	}
+
 	public generateBookedServiceValues(values: {
 		organizationId: string
 		locationId: string
@@ -147,3 +160,6 @@ export type SendMessageTargetAndPayload =
 
 export type UpdateAppointmentTargetAndPayload =
 	SpruceSchemas.Appointments.v2021_06_23.UpdateEmitTargetAndPayload
+
+export type GenerateUrlTargetAndPayload =
+	SpruceSchemas.Heartwood.v2021_02_11.GenerateUrlEmitTargetAndPayload

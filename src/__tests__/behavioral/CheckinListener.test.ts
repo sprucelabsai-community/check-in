@@ -17,6 +17,7 @@ export default class CheckinListenerTest extends AbstractCheckinTest {
 		await this.eventFaker.fakeUpdateAppointment()
 		await this.eventFaker.fakeGetPerson()
 		await this.eventFaker.fakeSendMessage()
+		await this.eventFaker.fakeGenerateUrl()
 		await this.eventFaker.fakeListAppointments(() => [
 			this.eventFaker.generateListAppointmentValues({
 				locationId: this.locationId,

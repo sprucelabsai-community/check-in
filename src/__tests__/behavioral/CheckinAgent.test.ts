@@ -1,9 +1,11 @@
+import { Link } from '@sprucelabs/spruce-core-schemas'
 import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
-import { test, assert, errorAssert } from '@sprucelabs/test-utils'
+import { test, assert, errorAssert, generateId } from '@sprucelabs/test-utils'
 import { ListAppointment } from '../../checkin.types'
 import CheckinAgent from '../../CheckinAgent'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
 import {
+	GenerateUrlTargetAndPayload,
 	GetPersonTargetAndPayload,
 	ListAppointmentsTargetAndPayload,
 	SendMessageTargetAndPayload,
@@ -32,6 +34,7 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 		})
 		await this.eventFaker.fakeSendMessage()
 		await this.eventFaker.fakeUpdateAppointment()
+		await this.eventFaker.fakeGenerateUrl()
 	}
 
 	@test()
@@ -158,17 +161,68 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 
 	@test()
 	protected static async returnsProviderNameBack() {
+		const providerName = await this.bootSkillAndCheckin()
+
+		assert.isEqual(
+			providerName,
+			this.fakedAppointment.services[0].providerCasualName
+		)
+	}
+
+	@test()
+	protected static async generatesLinkForMessage() {
+		let passedTarget: GenerateUrlTargetAndPayload['target'] | undefined
+		let passedPayload: GenerateUrlTargetAndPayload['payload'] | undefined
+
+		await this.eventFaker.fakeGenerateUrl(({ target, payload }) => {
+			passedTarget = target
+			passedPayload = payload
+		})
+
+		await this.bootSkillAndCheckin()
+
+		assert.isEqualDeep(passedTarget, {
+			skillViewId: 'feed.root' as any,
+		})
+
+		assert.isEqualDeep(passedPayload, {
+			args: {
+				scopedLocationId: this.locationIds[0],
+				personId: this.fakedPerson.id,
+			},
+		})
+	}
+
+	@test()
+	protected static async dropsLinkIntoMessage() {
+		const url = generateId()
+
+		let passedLinks: Link[] | undefined | null
+
+		await this.eventFaker.fakeGenerateUrl(() => url)
+
+		await this.eventFaker.fakeSendMessage(({ payload }) => {
+			passedLinks = payload.message.links
+		})
+
+		await this.bootSkillAndCheckin()
+
+		assert.isEqualDeep(passedLinks, [
+			{
+				label: `${this.fakedPerson.casualName}'s Feed`,
+				uri: url,
+			},
+		])
+	}
+
+	private static async bootSkillAndCheckin() {
 		const { skill } = await this.bootSkill()
 		const { checkin } = skill.getContext()
 		const providerName = await checkin({
 			locationId: this.locationIds[0],
 			phone: '555-555-5555',
 		})
-
-		assert.isEqual(
-			providerName,
-			this.fakedAppointment.services[0].providerCasualName
-		)
+		return providerName
 	}
 
 	private static async checkin(phone = '555-555-5555') {
