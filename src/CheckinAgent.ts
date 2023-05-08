@@ -41,7 +41,7 @@ export default class CheckinAgent {
 				},
 				payload: {
 					afterDateTimeMs: dateUtil.addMinutes(now, -15),
-					beforeDateTimeMs: dateUtil.addMinutes(now, 10),
+					beforeDateTimeMs: dateUtil.addMinutes(now, 30),
 				},
 			}
 		)
