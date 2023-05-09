@@ -86,9 +86,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 			locationId: this.locationIds[0],
 		})
 
-		assert.isTruthy(this.passedPayload?.afterDateTimeMs)
-		assert.isTruthy(this.passedPayload?.afterDateTimeMs)
-
+		assert.isTrue(this.passedPayload?.shouldSearchLocationWide)
 		this.support.assertUpcomingAppointmentstPayloadRangeIsGood(
 			this.passedPayload
 		)

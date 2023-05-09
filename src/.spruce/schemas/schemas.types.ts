@@ -3689,6 +3689,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'afterDateTimeMs'?: SpruceSchema.DateTimeFieldValue| undefined | null
 				
 				'beforeDateTimeMs'?: SpruceSchema.DateTimeFieldValue| undefined | null
+				
+				'shouldSearchLocationWide'?: boolean| undefined | null
 		}
 
 		interface ListEmitPayloadSchema extends SpruceSchema.Schema {
@@ -3705,6 +3707,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'beforeDateTimeMs': {
 			                type: 'dateTime',
+			                options: undefined
+			            },
+			            /** . */
+			            'shouldSearchLocationWide': {
+			                type: 'boolean',
 			                options: undefined
 			            },
 			    }
