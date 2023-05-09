@@ -86,6 +86,9 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 			locationId: this.locationIds[0],
 		})
 
+		assert.isTruthy(this.passedPayload?.afterDateTimeMs)
+		assert.isTruthy(this.passedPayload?.afterDateTimeMs)
+
 		this.support.assertUpcomingAppointmentstPayloadRangeIsGood(
 			this.passedPayload
 		)
@@ -158,7 +161,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	}
 
 	@test()
-	protected static async privaderNameShouldBeInRow() {
+	protected static async providerNameShouldBeInRow() {
 		const appointment = this.addFakeAppointment()
 		await RootSkillViewTest.loadAndWaitForGuests()
 
