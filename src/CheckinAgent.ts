@@ -55,6 +55,15 @@ export default class CheckinAgent {
 		const appointment = appointments[0]
 		const service = appointment.services[0]
 
+		const [{ location }] = await this.client.emitAndFlattenResponses(
+			'get-location::v2020_12_25',
+			{
+				target: {
+					locationId,
+				},
+			}
+		)
+
 		const [{ url }] = await this.client.emitAndFlattenResponses(
 			'heartwood.generate-url::v2021_02_11',
 			{
@@ -64,6 +73,7 @@ export default class CheckinAgent {
 				payload: {
 					args: {
 						scopedLocationId: locationId,
+						scopedOrganizationId: location.organizationId,
 						personId: person.id,
 					},
 				},

@@ -187,6 +187,7 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 
 		assert.isEqualDeep(passedPayload, {
 			args: {
+				scopedOrganizationId: this.organizationIds[0],
 				scopedLocationId: this.locationIds[0],
 				personId: this.fakedPerson.id,
 			},

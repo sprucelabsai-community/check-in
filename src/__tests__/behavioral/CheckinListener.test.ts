@@ -1,5 +1,5 @@
 import { Skill } from '@sprucelabs/spruce-skill-utils'
-import { fake } from '@sprucelabs/spruce-test-fixtures'
+import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
 import { test, assert, generateId } from '@sprucelabs/test-utils'
 import { CheckinOptions } from '../../checkin.types'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
@@ -8,11 +8,13 @@ import AbstractCheckinTest from '../support/AbstractCheckinTest'
 export default class CheckinListenerTest extends AbstractCheckinTest {
 	private static skill: Skill
 	private static locationId: string
+
+	@seed('locations', 1)
 	protected static async beforeEach(): Promise<void> {
 		await super.beforeEach()
 		const { skill } = await this.bootSkill()
 		this.skill = skill
-		this.locationId = generateId()
+		this.locationId = this.locationIds[0]
 
 		await this.eventFaker.fakeUpdateAppointment()
 		await this.eventFaker.fakeGetPerson()
