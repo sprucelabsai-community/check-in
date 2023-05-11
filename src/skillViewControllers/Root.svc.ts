@@ -86,6 +86,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 		return {
 			id: appointment.id,
+			onClick: this.handleClickCheckin.bind(this),
 			cells: [
 				{
 					text: {
@@ -99,7 +100,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 		}
 	}
 
-	private async handleClickCheckin() {
+	protected async handleClickCheckin() {
 		const vc = this.Controller('checkin.checkin-confirmation-card', {
 			locationId: this.location.id,
 			onSuccess: () => dlgVc.hide(),

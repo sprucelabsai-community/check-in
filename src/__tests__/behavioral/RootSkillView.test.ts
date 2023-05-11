@@ -205,6 +205,16 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		assert.isEqual(checkinVc.getLocationId(), this.locationIds[0])
 	}
 
+	@test()
+	protected static async clickingRowActsLikeClickingCheckin() {
+		this.addFakeAppointment()
+		await this.load()
+		await vcAssert.assertRendersDialog(this.vc, () => {
+			interactor.clickRow(this.listVc, 0)
+		})
+		assert.isTrue(this.vc.didHandleClickCheckin)
+	}
+
 	private static async loadAndWaitForGuests() {
 		await this.load()
 		await this.vc.waitForGuests()
@@ -264,6 +274,7 @@ class SpyActiveRecordCard extends ActiveRecordCardViewController {
 }
 
 class SpyRootViewController extends RootSkillViewController {
+	public didHandleClickCheckin = false
 	public getUpdateInterval() {
 		return this.updateIntervalMs
 	}
@@ -273,6 +284,11 @@ class SpyRootViewController extends RootSkillViewController {
 
 	public getListVc() {
 		return this.getActiveCardVc().getListVc()
+	}
+
+	public async handleClickCheckin() {
+		this.didHandleClickCheckin = true
+		return super.handleClickCheckin()
 	}
 
 	public setUpdateInterval(intervalMs: number) {
