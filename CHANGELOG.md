@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.2.8...v0.3.0) (2023-05-11)
+
+
+### Features
+
+* sticky footer! ([6083f6e](https://github.com/sprucelabsai-community/spruce-checkin-skill/commit/6083f6e))
+
 ## [0.2.8](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.2.7...v0.2.8) (2023-05-11)
 
 ## [0.2.7](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.2.6...v0.2.7) (2023-05-10)
