@@ -75,7 +75,8 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	@test()
 	protected static async activeRecordCardIsLoadedWhenLoadingVc() {
 		await this.load()
-		assert.isTrue(this.cardVc.getIsLoaded())
+		assert.isTrue(this.activeCardVc.getIsLoaded())
+		assert.isTrue(this.activeCardVc.getCardVc().getFooter()?.isSticky)
 	}
 
 	@test()
@@ -112,7 +113,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 
 	@test()
 	protected static async checkinButtonOnCard() {
-		buttonAssert.cardRendersButton(this.cardVc, 'checkin')
+		buttonAssert.cardRendersButton(this.activeCardVc, 'checkin')
 	}
 
 	@test()
@@ -190,7 +191,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		await this.load()
 
 		const dlg = await vcAssert.assertRendersDialog(this.vc, () =>
-			interactor.clickButton(this.cardVc, 'checkin')
+			interactor.clickButton(this.activeCardVc, 'checkin')
 		)
 
 		const checkinVc = vcAssert.assertRendersAsInstanceOf(
@@ -247,7 +248,7 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		listAssert.rowRendersContent(this.listVc, idOrIdx, name)
 	}
 
-	private static get cardVc() {
+	private static get activeCardVc() {
 		return this.vc.getActiveCardVc()
 	}
 }
@@ -255,6 +256,10 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 class SpyActiveRecordCard extends ActiveRecordCardViewController {
 	public getListVc() {
 		return this.listVc.getListVc()
+	}
+
+	public getCardVc() {
+		return this.cardVc
 	}
 }
 

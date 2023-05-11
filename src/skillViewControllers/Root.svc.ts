@@ -37,6 +37,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 				responseKey: 'appointments',
 				columnWidths: ['fill'],
 				footer: {
+					isSticky: true,
 					buttons: [
 						{
 							id: 'checkin',

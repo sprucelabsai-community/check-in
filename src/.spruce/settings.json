@@ -22,6 +22,9 @@
     }
   ],
   "events": {
-    "lastSync": {}
+    "lastSync": {},
+    "listenerCacheKeys": {
+      "http1270018081": "checkincheckinv2023_05_07didbootskillv2023_05_07getguestcheckinv2023_05_07"
+    }
   }
 }
