@@ -3,6 +3,17 @@
 	"configurations": [
 		{
 			"type": "node",
+			"request": "launch",
+			"name": "test.code",
+			"runtimeExecutable": "node",
+			"runtimeArgs": [
+				"--inspect-brk",
+				"--trace-warnings",
+				"${workspaceFolder}/build/code_challenge.js"
+			],
+		},
+		{
+			"type": "node",
 			"request": "attach",
 			"name": "attach.tests",
 			"port": 5200,
