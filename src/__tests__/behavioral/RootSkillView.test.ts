@@ -209,9 +209,9 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	protected static async clickingRowActsLikeClickingCheckin() {
 		this.addFakeAppointment()
 		await this.load()
-		await vcAssert.assertRendersDialog(this.vc, () => {
+		await vcAssert.assertRendersDialog(this.vc, () =>
 			interactor.clickRow(this.listVc, 0)
-		})
+		)
 		assert.isTrue(this.vc.didHandleClickCheckin)
 	}
 
