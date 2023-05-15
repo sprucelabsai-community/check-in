@@ -3,14 +3,14 @@ import { SpruceSchemas } from '../../schemas.types'
 
 
 
-const didBookAppointmentsEmitTargetSchema: SpruceSchemas.Appointments.v2021_06_23.DidBookAppointmentsEmitTargetSchema  = {
-	id: 'didBookAppointmentsEmitTarget',
+const didUpdateEmitTargetSchema: SpruceSchemas.Appointments.v2021_06_23.DidUpdateEmitTargetSchema  = {
+	id: 'didUpdateEmitTarget',
 	version: 'v2021_06_23',
 	namespace: 'Appointments',
 	name: '',
 	    fields: {
 	            /** . */
-	            'organizationId': {
+	            'locationId': {
 	                type: 'id',
 	                isRequired: true,
 	                options: undefined
@@ -18,6 +18,6 @@ const didBookAppointmentsEmitTargetSchema: SpruceSchemas.Appointments.v2021_06_2
 	    }
 }
 
-SchemaRegistry.getInstance().trackSchema(didBookAppointmentsEmitTargetSchema)
+SchemaRegistry.getInstance().trackSchema(didUpdateEmitTargetSchema)
 
-export default didBookAppointmentsEmitTargetSchema
+export default didUpdateEmitTargetSchema
