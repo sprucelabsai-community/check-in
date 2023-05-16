@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@sprucelabs/calendar-utils": "^36.0.17",
+    "@sprucelabs/data-stores": "^24.0.6",
     "@sprucelabs/error": "^5.1.2",
     "@sprucelabs/globby": "^1.0.1",
     "@sprucelabs/heartwood-view-controllers": "^103.6.5",
@@ -55,6 +56,7 @@
     "@sprucelabs/spruce-permission-plugin": "^29.0.25",
     "@sprucelabs/spruce-skill-booter": "^58.0.16",
     "@sprucelabs/spruce-skill-utils": "^29.0.8",
+    "@sprucelabs/spruce-store-plugin": "^58.0.16",
     "@sprucelabs/spruce-view-plugin": "^45.0.23",
     "dotenv": "^16.0.3"
   },

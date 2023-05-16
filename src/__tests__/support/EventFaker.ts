@@ -2,7 +2,7 @@ import { SpruceSchemas } from '@sprucelabs/heartwood-view-controllers'
 import { Person } from '@sprucelabs/spruce-core-schemas'
 import { eventFaker } from '@sprucelabs/spruce-test-fixtures'
 import { generateId } from '@sprucelabs/test-utils'
-import { ListAppointment } from '../../checkin.types'
+import { Appointment, ListAppointment } from '../../checkin.types'
 
 export default class EventFaker {
 	private fakedPerson: SpruceSchemas.Spruce.v2020_07_22.Person
@@ -24,6 +24,23 @@ export default class EventFaker {
 				}
 			}
 		)
+	}
+
+	public async fakeGetAppointment(
+		cb?: (
+			targetAndPayload: GetAppointmentTargetAndPayload
+		) => void | Appointment
+	) {
+		await eventFaker.on('appointments.get::v2021_06_23', (targetAndPayload) => {
+			return {
+				appointment:
+					cb?.(targetAndPayload) ??
+					this.generateListAppointmentValues({
+						locationId: generateId(),
+						organizationId: generateId(),
+					}),
+			}
+		})
 	}
 
 	public async fakeUpdateAppointment(
@@ -113,7 +130,7 @@ export default class EventFaker {
 				.map(() => this.generateBookedServiceValues(values)),
 			target: {
 				locationId,
-				guestId: generateId(),
+				guestId: this.fakedPerson.id,
 			},
 		}
 	}
@@ -139,6 +156,7 @@ export default class EventFaker {
 		})
 	}
 }
+
 export type ListAppointmentsTargetAndPayload =
 	SpruceSchemas.Appointments.v2021_06_23.ListEmitTargetAndPayload
 
@@ -147,6 +165,7 @@ export interface GenerateListAppointmentValuesOptions {
 	locationId: string
 	totalServices?: number
 	startDateTimeMs?: number
+	guestId?: string
 }
 
 export type GetPersonTargetAndPayload =
@@ -163,3 +182,6 @@ export type UpdateAppointmentTargetAndPayload =
 
 export type GenerateUrlTargetAndPayload =
 	SpruceSchemas.Heartwood.v2021_02_11.GenerateUrlEmitTargetAndPayload
+
+export type GetAppointmentTargetAndPayload =
+	SpruceSchemas.Appointments.v2021_06_23.GetEmitTargetAndPayload

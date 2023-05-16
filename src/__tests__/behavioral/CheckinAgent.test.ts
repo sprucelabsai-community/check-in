@@ -1,14 +1,11 @@
-import { Link } from '@sprucelabs/spruce-core-schemas'
 import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
-import { test, assert, errorAssert, generateId } from '@sprucelabs/test-utils'
+import { test, assert, errorAssert } from '@sprucelabs/test-utils'
 import { ListAppointment } from '../../checkin.types'
 import CheckinAgent from '../../CheckinAgent'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
 import {
-	GenerateUrlTargetAndPayload,
 	GetPersonTargetAndPayload,
 	ListAppointmentsTargetAndPayload,
-	SendMessageTargetAndPayload,
 	UpdateAppointmentTargetAndPayload,
 } from '../support/EventFaker'
 
@@ -28,13 +25,12 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 		})
 
 		await this.eventFaker.fakeGetPerson()
+
 		this.fakedAppointment = this.generateAppointmentValues()
 		await this.eventFaker.fakeListAppointments(() => {
 			return [this.fakedAppointment]
 		})
-		await this.eventFaker.fakeSendMessage()
 		await this.eventFaker.fakeUpdateAppointment()
-		await this.eventFaker.fakeGenerateUrl()
 	}
 
 	@test()
@@ -96,32 +92,12 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 		errorAssert.assertError(err, 'NO_UPCOMING_APPOINTMENTS')
 	}
 
-	@test()
-	protected static async sendsCheckinMessageToProviderOfFirstService() {
-		const providerId = this.fakedAppointment.services[0].providerId
-
-		let passedTarget: SendMessageTargetAndPayload['target'] | undefined
-		let passedPayload: SendMessageTargetAndPayload['payload'] | undefined
-
-		await this.eventFaker.fakeSendMessage(({ target, payload }) => {
-			passedTarget = target
-			passedPayload = payload
-		})
-
-		await this.checkin()
-
-		assert.isEqualDeep(passedTarget, {
-			locationId: this.locationIds[0],
-			personId: providerId,
-		})
-
-		assert.doesInclude(passedPayload?.message, {
-			classification: 'transactional',
-		})
-	}
-
-	@test()
-	protected static async updatesTheAppointmentStatusToCheckedIn() {
+	@test('updates no status to checked in', [])
+	@test('adds checked in to statuses already set', ['waka-waka'])
+	@test('does not double add checked-in', ['checked-in'])
+	protected static async updatesTheAppointmentStatusToCheckedIn(
+		startingStatuses: string[]
+	) {
 		let passedTarget: UpdateAppointmentTargetAndPayload['target'] | undefined
 		let passedPayload: UpdateAppointmentTargetAndPayload['payload'] | undefined
 
@@ -130,6 +106,7 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 			passedTarget = target
 		})
 
+		this.fakedAppointment.statuses = startingStatuses
 		await this.checkin()
 
 		assert.isEqualDeep(passedTarget, {
@@ -137,8 +114,9 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 			locationId: this.locationIds[0],
 		})
 
+		const expected = [...startingStatuses, 'checked-in']
 		assert.isEqualDeep(passedPayload, {
-			statuses: ['checked-in'],
+			statuses: [...new Set(expected)],
 		})
 	}
 
@@ -169,53 +147,6 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 		)
 	}
 
-	@test()
-	protected static async generatesLinkForMessage() {
-		let passedTarget: GenerateUrlTargetAndPayload['target'] | undefined
-		let passedPayload: GenerateUrlTargetAndPayload['payload'] | undefined
-
-		await this.eventFaker.fakeGenerateUrl(({ target, payload }) => {
-			passedTarget = target
-			passedPayload = payload
-		})
-
-		await this.bootSkillAndCheckin()
-
-		assert.isEqualDeep(passedTarget, {
-			skillViewId: 'feed.root' as any,
-		})
-
-		assert.isEqualDeep(passedPayload, {
-			args: {
-				scopedOrganizationId: this.organizationIds[0],
-				scopedLocationId: this.locationIds[0],
-				personId: this.fakedPerson.id,
-			},
-		})
-	}
-
-	@test()
-	protected static async dropsLinkIntoMessage() {
-		const url = generateId()
-
-		let passedLinks: Link[] | undefined | null
-
-		await this.eventFaker.fakeGenerateUrl(() => url)
-
-		await this.eventFaker.fakeSendMessage(({ payload }) => {
-			passedLinks = payload.message.links
-		})
-
-		await this.bootSkillAndCheckin()
-
-		assert.isEqualDeep(passedLinks, [
-			{
-				label: `${this.fakedPerson.casualName}'s Feed`,
-				uri: url,
-			},
-		])
-	}
-
 	private static async bootSkillAndCheckin() {
 		const { skill } = await this.bootSkill()
 		const { checkin } = skill.getContext()
@@ -234,6 +165,7 @@ export default class CheckinAgentTest extends AbstractCheckinTest {
 		return this.eventFaker.generateListAppointmentValues({
 			locationId: this.locationIds[0],
 			organizationId: this.organizationIds[0],
+			guestId: this.fakedPerson.id,
 		})
 	}
 }

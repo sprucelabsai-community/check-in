@@ -22,6 +22,20 @@ const listeners: EventFeatureListener[] = [
         callback: require('../../listeners/skill/did-boot.v2023_05_07.listener').default,
         isGlobal: require('../../listeners/skill/did-boot.v2023_05_07.listener').isGlobal,
     },
+    {
+        eventName: 'did-book',
+        eventNamespace: 'appointments',
+        version: 'v2021_06_23',
+        callback: require('../../respondingToBookEvents/listeners/appointments/did-book.v2021_06_23.listener').default,
+        isGlobal: require('../../respondingToBookEvents/listeners/appointments/did-book.v2021_06_23.listener').isGlobal,
+    },
+    {
+        eventName: 'did-update',
+        eventNamespace: 'appointments',
+        version: 'v2021_06_23',
+        callback: require('../../respondingToBookEvents/listeners/appointments/did-update.v2021_06_23.listener').default,
+        isGlobal: require('../../respondingToBookEvents/listeners/appointments/did-update.v2021_06_23.listener').isGlobal,
+    },
 ]
 
 export default listeners

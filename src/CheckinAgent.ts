@@ -55,50 +55,6 @@ export default class CheckinAgent {
 		const appointment = appointments[0]
 		const service = appointment.services[0]
 
-		const [{ location }] = await this.client.emitAndFlattenResponses(
-			'get-location::v2020_12_25',
-			{
-				target: {
-					locationId,
-				},
-			}
-		)
-
-		const [{ url }] = await this.client.emitAndFlattenResponses(
-			'heartwood.generate-url::v2021_02_11',
-			{
-				target: {
-					skillViewId: 'feed.root',
-				},
-				payload: {
-					args: {
-						scopedLocationId: locationId,
-						scopedOrganizationId: location.organizationId,
-						personId: person.id,
-					},
-				},
-			}
-		)
-
-		await this.client.emitAndFlattenResponses('send-message::v2020_12_25', {
-			target: {
-				locationId,
-				personId: service.providerId,
-			},
-			payload: {
-				message: {
-					body: `Hey ${service.providerCasualName}! ${person.casualName} is here for their ${service.serviceName}!`,
-					classification: 'transactional',
-					links: [
-						{
-							label: `${person.casualName}'s Feed`,
-							uri: url,
-						},
-					],
-				},
-			},
-		})
-
 		await this.client.emitAndFlattenResponses(
 			'appointments.update::v2021_06_23',
 			{
@@ -107,7 +63,7 @@ export default class CheckinAgent {
 					locationId,
 				},
 				payload: {
-					statuses: ['checked-in'],
+					statuses: [...new Set([...appointment.statuses, 'checked-in'])],
 				},
 			}
 		)
