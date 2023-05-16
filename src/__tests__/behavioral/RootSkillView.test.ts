@@ -1,14 +1,15 @@
 import {
 	ActiveRecordCardViewController,
-	buttonAssert,
-	interactor,
+	ViewControllerOptions,
 	vcAssert,
 } from '@sprucelabs/heartwood-view-controllers'
 import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
-import { test, assert } from '@sprucelabs/test-utils'
+import { assert, test } from '@sprucelabs/test-utils'
 import { ListAppointment } from '../../checkin.types'
 import RootSkillViewController from '../../skillViewControllers/Root.svc'
-import CheckinConfirmationCardViewController from '../../viewControllers/CheckinConfirmationCard.vc'
+import CheckinConfirmationCardViewController, {
+	CheckinCardOptions,
+} from '../../viewControllers/CheckinConfirmationCard.vc'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
 import { GenerateListAppointmentValuesOptions } from '../support/EventFaker'
 
@@ -44,7 +45,12 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 
 	@test()
 	protected static async rendersActiveRecordCard() {
-		vcAssert.assertSkillViewRendersCard(this.vc, 'appointments')
+		await this.load()
+		const cardVc = vcAssert.assertSkillViewRendersCard(this.vc, 'checkin')
+		vcAssert.assertRendersAsInstanceOf(
+			cardVc,
+			CheckinConfirmationCardViewController
+		)
 	}
 
 	@test()
@@ -53,29 +59,10 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	}
 
 	@test()
-	protected static async checkinButtonOnCard() {
-		buttonAssert.cardRendersButton(this.activeCardVc, 'checkin')
-	}
-
-	@test()
-	protected static async clickingCheckinPopsUpConfirm() {
+	protected static async loadSetsUpCheckinProperly() {
 		this.addFakeAppointment()
-
 		await this.load()
-
-		const dlg = await vcAssert.assertRendersDialog(this.vc, () =>
-			interactor.clickButton(this.activeCardVc, 'checkin')
-		)
-
-		const checkinVc = vcAssert.assertRendersAsInstanceOf(
-			dlg,
-			CheckinConfirmationCardViewController
-		) as SpyCheckinCard
-
-		await checkinVc.submitForm()
-
-		assert.isFalse(dlg.getIsVisible())
-		assert.isEqual(checkinVc.getLocationId(), this.locationIds[0])
+		assert.isEqual(SpyCheckinCard.constructorLocationId, this.locationIds[0])
 	}
 
 	private static addFakeAppointment(
@@ -94,10 +81,6 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 	private static async load() {
 		await this.views.load(this.vc)
 	}
-
-	private static get activeCardVc() {
-		return this.vc.getActiveCardVc()
-	}
 }
 
 class SpyActiveRecordCard extends ActiveRecordCardViewController {
@@ -115,14 +98,6 @@ class SpyRootViewController extends RootSkillViewController {
 	public getUpdateInterval() {
 		return this.updateIntervalMs
 	}
-	public getActiveCardVc() {
-		return this.cardVc
-	}
-
-	public async handleClickCheckin() {
-		this.didHandleClickCheckin = true
-		return super.handleClickCheckin()
-	}
 
 	public setUpdateInterval(intervalMs: number) {
 		this.updateIntervalMs = intervalMs
@@ -130,6 +105,12 @@ class SpyRootViewController extends RootSkillViewController {
 }
 
 class SpyCheckinCard extends CheckinConfirmationCardViewController {
+	public static constructorLocationId: string
+	public constructor(options: ViewControllerOptions & CheckinCardOptions) {
+		super(options)
+		SpyCheckinCard.constructorLocationId = options.locationId
+	}
+
 	public getLocationId() {
 		return this.locationId
 	}

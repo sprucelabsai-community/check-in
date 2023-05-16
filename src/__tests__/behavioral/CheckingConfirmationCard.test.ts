@@ -3,7 +3,7 @@ import {
 	interactor,
 	vcAssert,
 } from '@sprucelabs/heartwood-view-controllers'
-import { fake, seed } from '@sprucelabs/spruce-test-fixtures'
+import { eventFaker, fake, seed } from '@sprucelabs/spruce-test-fixtures'
 import { test, assert, errorAssert } from '@sprucelabs/test-utils'
 import CheckinConfirmationCardViewController from '../../viewControllers/CheckinConfirmationCard.vc'
 import AbstractCheckinTest from '../support/AbstractCheckinTest'
@@ -90,13 +90,42 @@ export default class CheckingConfirmationCardTest extends AbstractCheckinTest {
 	@test()
 	protected static async successInvokesOnSubmit() {
 		this.assertOnSuccesNotInvoked()
+		const alertVc = await this.setPhoneAndAssertSuccessOnSubmit()
+		this.assertOnSuccesNotInvoked()
+		await alertVc.hide()
+		assert.isTrue(this.wasOnSuccesHandlerHit)
+	}
+
+	@test()
+	protected static async phoneFieldClearsOnSuccess() {
+		const alertVc = await this.setPhoneAndAssertSuccessOnSubmit()
+		await alertVc.hide()
+		this.assertResetPhone()
+		vcAssert.assertCardIsNotBusy(this.vc)
+	}
+
+	@test()
+	protected static async phoneFieldDoesNotClearOnError() {
+		await eventFaker.makeEventThrow('checkin.checkin::v2023_05_07')
+		const alertVc = await this.setPhoneAndAssertSuccessOnSubmit()
+		await alertVc.hide()
+		assert.isTruthy(this.getPhone())
+	}
+
+	private static assertResetPhone() {
+		assert.isEqual(this.getPhone(), '')
+	}
+
+	private static getPhone(): string {
+		return this.formVc.getValue('phone')
+	}
+
+	private static async setPhoneAndAssertSuccessOnSubmit() {
 		await this.setPhone()
 		const alertVc = await vcAssert.assertRendersSuccessAlert(this.vc, () =>
 			this.submit()
 		)
-		this.assertOnSuccesNotInvoked()
-		await alertVc.hide()
-		assert.isTrue(this.wasOnSuccesHandlerHit)
+		return alertVc
 	}
 
 	private static assertOnSuccesNotInvoked() {

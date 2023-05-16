@@ -32,8 +32,9 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 	private CardVc(): CardViewController {
 		const vc = this.TalkingSprucebot()
 		return this.Controller('card', {
+			id: 'checkin',
 			header: {
-				title: 'Confirm your number',
+				title: 'Checkin 👇',
 			},
 			body: {
 				sections: [
@@ -103,13 +104,14 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 				message: `You'll be seeing ${providerName} today! C'mon in!`,
 			})
 			this.onSuccessHandler()
+			await this.formVc.setValue('phone', '')
 		} catch (err: any) {
 			console.error(err)
 			await this.alert({
 				message: err.message,
 			})
-			this.cardVc.setIsBusy(false)
 		}
+		this.cardVc.setIsBusy(false)
 	}
 
 	public render() {
