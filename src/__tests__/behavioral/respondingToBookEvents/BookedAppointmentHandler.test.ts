@@ -1,5 +1,5 @@
 import { Link } from '@sprucelabs/spruce-core-schemas'
-import { fake } from '@sprucelabs/spruce-test-fixtures'
+import { eventFaker, fake } from '@sprucelabs/spruce-test-fixtures'
 import { test, assert, errorAssert, generateId } from '@sprucelabs/test-utils'
 import { Appointment, DidBookAppointment } from '../../../checkin.types'
 import BookedAppointmentHandler from '../../../respondingToBookEvents/BookedAppointmentHandler'
@@ -22,6 +22,8 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 	protected static async beforeEach(): Promise<void> {
 		await super.beforeEach()
 
+		BookedAppointmentHandler.debounceDurationMs = 0
+
 		await this.eventFaker.fakeSendMessage((targetAndPayload) => {
 			this.sentMessages.push(targetAndPayload)
 		})
@@ -41,7 +43,7 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 			stores: this.stores,
 			client: this.fakedClient,
 		})
-		this.sentMessages = []
+		this.resetSentMessages()
 	}
 
 	@test()
@@ -61,6 +63,7 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 		statuses: string[]
 	) {
 		const appointment = await this.handle(statuses)
+		await this.wait(20)
 
 		const tracked = await this.tracker.findOne({
 			id: appointment.id,
@@ -187,10 +190,33 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 		assert.isEqual(passedLocationId, this.locationId)
 	}
 
+	@test()
+	protected static async onlySinceOnceWhenUpdatingFast() {
+		const appt = await this.handle([])
+		this.resetSentMessages()
+		await Promise.all([this.checkin(appt.id), this.checkin(appt.id)])
+		this.assertTotalMessagesSent(1)
+	}
+
+	@test()
+	protected static async eventsFailingDoesNotCrashSkill() {
+		await eventFaker.makeEventThrow('get-person::v2020_12_25')
+		await this.handleCheckedIn()
+		await this.wait(100)
+	}
+
 	private static async handleCheckedIn() {
 		const appt = await this.handle([])
-		await this.handle(['checked-in'], appt.id)
+		await this.checkin(appt.id)
 		return appt
+	}
+
+	private static resetSentMessages() {
+		this.sentMessages = []
+	}
+
+	private static async checkin(id: string) {
+		await this.handle(['checked-in'], id)
 	}
 
 	private static assertTotalMessagesSent(expected: number) {
@@ -207,6 +233,7 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 		}
 
 		await this.handler.handle(appointment)
+		await this.wait(5)
 		return appointment
 	}
 }

@@ -2,11 +2,15 @@ import { SimpleStoreFactory } from '@sprucelabs/data-stores'
 import { MercuryClient } from '@sprucelabs/mercury-client'
 import { assertOptions } from '@sprucelabs/schema'
 import { Person, SpruceSchemas } from '@sprucelabs/spruce-core-schemas'
+import { buildLog } from '@sprucelabs/spruce-skill-utils'
 import { Appointment, DidBookAppointment } from '../checkin.types'
 import TrackedAppointmentsStore from './TrackedAppointments.store'
 
 export default class BookedAppointmentHandler {
+	public static debounceDurationMs = 1000
 	public static Class: typeof BookedAppointmentHandler
+	private log = buildLog('BookedAppointmentHandler')
+	private handleTimeouts: Record<string, any> = {}
 
 	protected constructor(
 		private readonly tracker: TrackedAppointmentsStore,
@@ -25,6 +29,21 @@ export default class BookedAppointmentHandler {
 	public async handle(appointment: DidBookAppointment) {
 		const { id } = appointment
 
+		clearTimeout(this.handleTimeouts[id])
+		this.handleTimeouts[id] = setTimeout(async () => {
+			try {
+				await this._handle(appointment)
+			} catch (err: any) {
+				this.log.error(
+					'Failed to handle appointment for checkin',
+					err.stack ?? err.message
+				)
+			}
+		}, BookedAppointmentHandler.debounceDurationMs)
+	}
+
+	private async _handle(appointment: DidBookAppointment) {
+		const { id } = appointment
 		const match = await this.tracker.findOne({ id })
 		let shouldSend = false
 		if (match) {
