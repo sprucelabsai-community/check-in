@@ -86,6 +86,7 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 	private async handleSubmit() {
 		try {
 			this.cardVc.setIsBusy(true)
+
 			const client = await this.connectToApi()
 			const [{ providerName }] = await client.emitAndFlattenResponses(
 				'checkin.checkin::v2023_05_07',
@@ -98,11 +99,13 @@ export default class CheckinConfirmationCardViewController extends AbstractViewC
 					},
 				}
 			)
+
 			await this.alert({
 				style: 'success',
 				title: 'You are good to go!',
 				message: `You'll be seeing ${providerName} today! C'mon in!`,
 			})
+
 			this.onSuccessHandler()
 			await this.formVc.setValue('phone', '')
 		} catch (err: any) {

@@ -107,7 +107,10 @@ export default class CheckingConfirmationCardTest extends AbstractCheckinTest {
 	@test()
 	protected static async phoneFieldDoesNotClearOnError() {
 		await eventFaker.makeEventThrow('checkin.checkin::v2023_05_07')
-		const alertVc = await this.setPhoneAndAssertSuccessOnSubmit()
+		await this.setPhone()
+		const alertVc = await vcAssert.assertRendersAlert(this.vc, () =>
+			this.submit()
+		)
 		await alertVc.hide()
 		assert.isTruthy(this.getPhone())
 	}
