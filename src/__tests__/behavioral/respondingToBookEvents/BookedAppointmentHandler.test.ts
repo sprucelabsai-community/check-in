@@ -233,7 +233,7 @@ export default class BookedAppointmentHandlerTest extends AbstractCheckinTest {
 		}
 
 		await this.handler.handle(appointment)
-		await this.wait(5)
+		await this.wait(10)
 		return appointment
 	}
 }
