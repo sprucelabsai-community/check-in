@@ -34,6 +34,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 				onSuccess: () => {},
 			}
 		)
+		this.triggerRender()
 	}
 
 	public async waitForGuests() {
