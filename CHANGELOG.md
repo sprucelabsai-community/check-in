@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.3.5...v0.4.0) (2023-05-16)
+
+
+### Features
+
+* now hooks into did-book to send messages ([877047f](https://github.com/sprucelabsai-community/spruce-checkin-skill/commit/877047f))
+
 ## [0.3.5](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.3.4...v0.3.5) (2023-05-15)
 
 ## [0.3.4](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.3.3...v0.3.4) (2023-05-14)
