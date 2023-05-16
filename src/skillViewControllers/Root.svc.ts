@@ -25,7 +25,8 @@ export default class RootSkillViewController extends AbstractSkillViewController
 			body: {
 				sections: [
 					{
-						image: 'http://storybook.spruce.bot/images/checkin/spruce-logo.gif',
+						image:
+							'https://storybook.spruce.bot/images/checkin/spruce-logo.gif',
 					},
 				],
 			},
