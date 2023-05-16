@@ -1,7 +1,6 @@
 import {
 	AbstractSkillViewController,
 	Card,
-	CardViewController,
 	ScopeFlag,
 	SkillView,
 	SkillViewControllerLoadOptions,
@@ -17,20 +16,20 @@ export default class RootSkillViewController extends AbstractSkillViewController
 	protected interval?: any
 	private guestLoadPromises: Promise<void>[] = []
 	private confirmationCardVc?: CheckinConfirmationCardViewController
-	private logoCardVc: CardViewController
+	// private logoCardVc: CardViewController
 
 	public constructor(options: ViewControllerOptions) {
 		super(options)
-		this.logoCardVc = this.Controller('card', {
-			body: {
-				sections: [
-					{
-						image:
-							'https://storybook.spruce.bot/images/checkin/spruce-logo.gif',
-					},
-				],
-			},
-		})
+		// this.logoCardVc = this.Controller('card', {
+		// 	body: {
+		// 		sections: [
+		// 			{
+		// 				image:
+		// 					'https://storybook.spruce.bot/images/checkin/spruce-logo.gif',
+		// 			},
+		// 		],
+		// 	},
+		// })
 	}
 
 	public getScope = () => ['employed', 'location'] as ScopeFlag[]
@@ -60,9 +59,7 @@ export default class RootSkillViewController extends AbstractSkillViewController
 	public render(): SkillView {
 		return {
 			layouts: splitCardsIntoLayouts(
-				[this.logoCardVc.render(), this.confirmationCardVc?.render()].filter(
-					(c) => !!c
-				) as Card[],
+				[this.confirmationCardVc?.render()].filter((c) => !!c) as Card[],
 				2
 			),
 		}
