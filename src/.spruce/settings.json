@@ -23,14 +23,6 @@
     }
   ],
   "events": {
-    "lastSync": {
-      "contractDestinationDir": "#spruce/events",
-      "schemaTypesLookupDir": "#spruce/schemas",
-      "skillEventContractTypesFile": "@sprucelabs/mercury-types/build/types/mercury.types",
-      "eventBuilderFile": "@sprucelabs/mercury-types"
-    },
-    "listenerCacheKeys": {
-      "http1270018081": "checkincheckinv2023_05_07didbookappointmentsv2021_06_23didbootskillv2023_05_07didupdateappointmentsv2021_06_23getguestcheckinv2023_05_07"
-    }
+    "lastSync": {}
   }
 }
