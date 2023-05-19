@@ -53,11 +53,11 @@
     "@sprucelabs/spruce-core-schemas": "^38.1.19",
     "@sprucelabs/spruce-event-plugin": "^59.0.0",
     "@sprucelabs/spruce-event-utils": "^37.0.22",
-    "@sprucelabs/spruce-permission-plugin": "^29.0.35",
+    "@sprucelabs/spruce-permission-plugin": "^29.0.36",
     "@sprucelabs/spruce-skill-booter": "^59.0.0",
     "@sprucelabs/spruce-skill-utils": "^29.0.12",
     "@sprucelabs/spruce-store-plugin": "^59.0.0",
-    "@sprucelabs/spruce-view-plugin": "^45.0.32",
+    "@sprucelabs/spruce-view-plugin": "^45.0.33",
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
