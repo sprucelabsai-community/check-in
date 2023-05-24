@@ -2209,6 +2209,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'timeBlocks': SpruceSchemas.CalendarUtils.v2021_05_19.EventTimeBlock[]
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
+				
+				'color'?: string| undefined | null
 		}
 
 		interface CreateServiceEmitPayloadSchema extends SpruceSchema.Schema {
@@ -2256,6 +2258,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -2361,6 +2368,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'timeBlocks': SpruceSchemas.CalendarUtils.v2021_05_19.EventTimeBlock[]
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
+				
+				'color'?: string| undefined | null
 		}
 
 		interface CreateServiceSchema extends SpruceSchema.Schema {
@@ -2421,6 +2430,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -3696,6 +3710,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'timeBlocks': SpruceSchemas.CalendarUtils.v2021_05_19.EventTimeBlock[]
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
+				
+				'color'?: string| undefined | null
 		}
 
 		interface GetServiceSchema extends SpruceSchema.Schema {
@@ -3756,6 +3772,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -4902,6 +4923,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'timeBlocks': SpruceSchemas.CalendarUtils.v2021_05_19.EventTimeBlock[]
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
+				
+				'color'?: string| undefined | null
 		}
 
 		interface ListServiceSchema extends SpruceSchema.Schema {
@@ -4962,6 +4985,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -7185,6 +7213,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
 				
+				'color'?: string| undefined | null
+				
 				'addCategoryIds'?: string[]| undefined | null
 				
 				'removeCategoryIds'?: string[]| undefined | null
@@ -7233,6 +7263,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			            /** . */
@@ -7324,6 +7359,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'timeBlocks': SpruceSchemas.CalendarUtils.v2021_05_19.EventTimeBlock[]
 				
 				'icon'?: SpruceSchema.ImageFieldValue| undefined | null
+				
+				'color'?: string| undefined | null
 		}
 
 		interface GetServiceServiceSchema extends SpruceSchema.Schema {
@@ -7390,6 +7427,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'icon': {
 			                type: 'image',
+			                options: undefined
+			            },
+			            /** . */
+			            'color': {
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
