@@ -50,6 +50,9 @@ import appointmentsGetOrganizationSettingsEventContract_v2021_06_23, {
 import appointmentsGetServiceEventContract_v2021_06_23, {
 	GetServiceEventContract as AppointmentsGetServiceEventContract_v2021_06_23,
 } from '#spruce/events/appointments/getService.v2021_06_23.contract'
+import appointmentsGetServiceColorsEventContract_v2021_06_23, {
+	GetServiceColorsEventContract as AppointmentsGetServiceColorsEventContract_v2021_06_23,
+} from '#spruce/events/appointments/getServiceColors.v2021_06_23.contract'
 import appointmentsListEventContract_v2021_06_23, {
 	ListEventContract as AppointmentsListEventContract_v2021_06_23,
 } from '#spruce/events/appointments/list.v2021_06_23.contract'
@@ -139,6 +142,7 @@ export default [
 	checkinGetGuestEventContract_v2023_05_07,
 	appointmentsGetOrganizationSettingsEventContract_v2021_06_23,
 	appointmentsGetServiceEventContract_v2021_06_23,
+	appointmentsGetServiceColorsEventContract_v2021_06_23,
 	heartwoodGetSkillViewsEventContract_v2021_02_11,
 	appointmentsListEventContract_v2021_06_23,
 	appointmentsListBookedServicesEventContract_v2021_06_23,
@@ -209,6 +213,8 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'appointments.get-organization-settings::v2021_06_23': AppointmentsGetOrganizationSettingsEventContract_v2021_06_23['eventSignatures']['appointments.get-organization-settings::v2021_06_23']
 
 		'appointments.get-service::v2021_06_23': AppointmentsGetServiceEventContract_v2021_06_23['eventSignatures']['appointments.get-service::v2021_06_23']
+
+		'appointments.get-service-colors::v2021_06_23': AppointmentsGetServiceColorsEventContract_v2021_06_23['eventSignatures']['appointments.get-service-colors::v2021_06_23']
 
 		'heartwood.get-skill-views::v2021_02_11': HeartwoodGetSkillViewsEventContract_v2021_02_11['eventSignatures']['heartwood.get-skill-views::v2021_02_11']
 
