@@ -5,44 +5,17 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'checkin.checkin': [
 			'can-get-guest-details','can-checkin-self',
 		]
-		'heartwood.skill-views': [
-			'can-get-skill-views','can-register-skill-views','can-listen-to-did-register-skill-views','can-generate-url','can-get-skill-views','can-list-skill-views','can-get-dashboard-cards','can-get-active-theme','can-manage-organization-themes',
-		]
 		'appointments.appointments': [
 			'can-hold-time','can-cancel-hold','can-book-appointment','can-create-appointment','can-list-appointments','can-list-appointments-for-others','can-update-appointment','can-listen-to-did-book',
 		]
 		'appointments.management': [
 			'can-configure-people-capabilities','can-configure-role-capabilities','can-register-capabilities',
 		]
-		'appointments.getAvailableTimesEmitPermissions': [
-			'can-get-available-times',
-		]
-		'appointments.listBookedServicesEmitPermissions': [
-			'can-list-booked-services',
-		]
-		'appointments.getEmitPermissions': [
-			'can-get-appointment',
-		]
-		'appointments.getOrganizationSettingsEmitPermissions': [
-			'can-get-organization-settings',
-		]
-		'appointments.updateOrganizationSettingsEmitPermissions': [
-			'can-save-org-settings',
-		]
-		'appointments.getServiceEmitPermissions': [
-			'can-get-service',
-		]
-		'appointments.syncStatusesEmitPermissions': [
-			'can-high-five',
-		]
-		'appointments.listPeopleCapabilitiesEmitPermissions': [
-			'can-list-people-capabilities',
+		'heartwood.skill-views': [
+			'can-get-skill-views','can-register-skill-views','can-listen-to-did-register-skill-views','can-generate-url','can-get-skill-views','can-list-skill-views','can-get-dashboard-cards','can-get-active-theme','can-manage-organization-themes',
 		]
 		'appointments.createServiceEmitPermissions': [
 			'can-create-service',
-		]
-		'appointments.createCategoryEmitPermissions': [
-			'can-create-category',
 		]
 		'appointments.deleteCategoryEmitPermissions': [
 			'can-delete-category',
@@ -50,32 +23,59 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'appointments.deleteServiceEmitPermissions': [
 			'can-delete-service',
 		]
-		'appointments.getCategoryEmitPermissions': [
-			'can-get-category',
+		'appointments.getEmitPermissions': [
+			'can-get-appointment',
 		]
 		'appointments.listRoleCapabilitiesEmitPermissions': [
 			'can-list-role-capabilities',
 		]
-		'appointments.listStatusesEmitPermissions': [
-			'can-list-statuses',
+		'appointments.getOrganizationSettingsEmitPermissions': [
+			'can-get-organization-settings',
 		]
-		'appointments.listServicesWithProvidersEmitPermissions': [
-			'can-list-services-with-providers',
+		'appointments.getServiceEmitPermissions': [
+			'can-get-service',
 		]
-		'appointments.updateServiceEmitPermissions': [
-			'can-edit-service',
+		'appointments.createCategoryEmitPermissions': [
+			'can-create-category',
 		]
 		'appointments.listCategoriesEmitPermissions': [
 			'can-list-categories',
 		]
-		'appointments.listServicesEmitPermissions': [
-			'can-list-services',
+		'appointments.getAvailableTimesEmitPermissions': [
+			'can-get-available-times',
+		]
+		'appointments.getCategoryEmitPermissions': [
+			'can-get-category',
 		]
 		'appointments.willSendConfirmationListenPermissions': [
 			'can-listen-to-will-send',
 		]
+		'appointments.listServicesEmitPermissions': [
+			'can-list-services',
+		]
+		'appointments.listStatusesEmitPermissions': [
+			'can-list-statuses',
+		]
+		'appointments.syncStatusesEmitPermissions': [
+			'can-high-five',
+		]
 		'appointments.updateCategoryEmitPermissions': [
 			'can-edit-category',
+		]
+		'appointments.updateOrganizationSettingsEmitPermissions': [
+			'can-save-org-settings',
+		]
+		'appointments.updateServiceEmitPermissions': [
+			'can-edit-service',
+		]
+		'appointments.listServicesWithProvidersEmitPermissions': [
+			'can-list-services-with-providers',
+		]
+		'appointments.listPeopleCapabilitiesEmitPermissions': [
+			'can-list-people-capabilities',
+		]
+		'appointments.listBookedServicesEmitPermissions': [
+			'can-list-booked-services',
 		]
 	}
 }
