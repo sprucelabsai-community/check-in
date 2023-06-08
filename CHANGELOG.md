@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.4.27...v0.5.0) (2023-06-08)
+
+
+### Features
+
+* hide navigation ([d9cdd5d](https://github.com/sprucelabsai-community/spruce-checkin-skill/commit/d9cdd5d))
+
 ## [0.4.27](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.4.26...v0.4.27) (2023-06-08)
 
 ## [0.4.26](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.4.25...v0.4.26) (2023-06-07)
