@@ -65,6 +65,11 @@ export default class RootSkillViewTest extends AbstractCheckinTest {
 		assert.isEqual(SpyCheckinCard.constructorLocationId, this.locationIds[0])
 	}
 
+	@test()
+	protected static async hidesNavigation() {
+		assert.isNull(this.vc.renderNavigation())
+	}
+
 	private static addFakeAppointment(
 		options?: Partial<GenerateListAppointmentValuesOptions>
 	) {

@@ -34,6 +34,10 @@ export default class RootSkillViewController extends AbstractSkillViewController
 
 	public getScope = () => ['employed', 'location'] as ScopeFlag[]
 
+	public renderNavigation() {
+		return null
+	}
+
 	public async load({ scope }: SkillViewControllerLoadOptions) {
 		const location = (await scope.getCurrentLocation()) as Location
 
