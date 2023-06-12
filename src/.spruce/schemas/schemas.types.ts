@@ -3556,6 +3556,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'approvalStrategy': ("auto-approve" | "required-all" | "required-first")
 				/** Available times for guests. */
 				'guestAvailabilityInterval': ("15" | "30" | "60" | "custom")
+				/** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
+				'shouldRequireNameToBook'?: boolean| undefined | null
 		}
 
 		interface GetOrgSettingsSettingsSchema extends SpruceSchema.Schema {
@@ -3577,6 +3579,13 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                type: 'select',
 			                isRequired: true,
 			                options: {choices: [{"label":"Every 15 minutes","value":"15"},{"label":"Every 30 minutes","value":"30"},{"label":"Every hour","value":"60"},{"label":"Custom","value":"custom"}],}
+			            },
+			            /** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
+			            'shouldRequireNameToBook': {
+			                label: 'Require name to book',
+			                type: 'boolean',
+			                hint: 'By default, a person only needs their number. Should I ask for their name too?',
+			                options: undefined
 			            },
 			    }
 		}
@@ -6665,6 +6674,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'approvalStrategy': ("auto-approve" | "required-all" | "required-first")
 				/** Available times for guests. */
 				'guestAvailabilityInterval': ("15" | "30" | "60" | "custom")
+				/** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
+				'shouldRequireNameToBook'?: boolean| undefined | null
 		}
 
 		interface UpdateOrganizationSettingsEmitPayloadSchema extends SpruceSchema.Schema {
@@ -6686,6 +6697,13 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                type: 'select',
 			                isRequired: true,
 			                options: {choices: [{"label":"Every 15 minutes","value":"15"},{"label":"Every 30 minutes","value":"30"},{"label":"Every hour","value":"60"},{"label":"Custom","value":"custom"}],}
+			            },
+			            /** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
+			            'shouldRequireNameToBook': {
+			                label: 'Require name to book',
+			                type: 'boolean',
+			                hint: 'By default, a person only needs their number. Should I ask for their name too?',
+			                options: undefined
 			            },
 			    }
 		}
