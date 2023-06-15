@@ -45,7 +45,7 @@
     "@sprucelabs/data-stores": "^24.0.31",
     "@sprucelabs/error": "^5.1.9",
     "@sprucelabs/globby": "^1.0.1",
-    "@sprucelabs/heartwood-view-controllers": "^105.0.2",
+    "@sprucelabs/heartwood-view-controllers": "^105.0.3",
     "@sprucelabs/mercury-client": "^40.1.66",
     "@sprucelabs/mercury-core-events": "^21.1.55",
     "@sprucelabs/mercury-types": "^45.0.48",
