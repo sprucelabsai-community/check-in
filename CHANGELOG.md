@@ -1,3 +1,10 @@
+# [1.0.0](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.5.5...v1.0.0) (2023-06-15)
+
+
+### Breaking Changes
+
+* upgrade ([4775c5e](https://github.com/sprucelabsai-community/spruce-checkin-skill/commit/4775c5e))
+
 ## [0.5.5](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.5.4...v0.5.5) (2023-06-13)
 
 ## [0.5.4](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v0.5.3...v0.5.4) (2023-06-12)
