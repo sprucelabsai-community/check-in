@@ -1,7 +1,7 @@
 {
   "name": "checkin",
   "description": "A way to check in to your appointment wicked fast!",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "skill": {
     "namespace": "checkin"
   },
