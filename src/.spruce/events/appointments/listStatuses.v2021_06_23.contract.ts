@@ -17,12 +17,12 @@ const listStatusesEventContract = buildEventContract({
 					{
 						id: 'can-list-statuses',
 						name: 'Can list statuses',
-						requireAllStatuses: false,
 						defaults: {
 							loggedIn: {
 								default: true,
 							},
 						},
+						requireAllStatuses: false,
 					},
 				],
 			}),
