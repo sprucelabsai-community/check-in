@@ -12,7 +12,6 @@ const getCategoryEventContract = buildEventContract({
 			emitPermissionContract: buildPermissionContract({
 				id: 'appointments.getCategoryEmitPermissions',
 				name: 'get category',
-				description: null,
 				requireAllPermissions: false,
 				permissions: [
 					{
@@ -22,27 +21,13 @@ const getCategoryEventContract = buildEventContract({
 						requireAllStatuses: false,
 						defaults: {
 							skill: true,
-							owner: null,
-							groupManager: null,
-							manager: null,
-							teammate: null,
 							anonymous: {
 								default: true,
-								clockedIn: null,
-								clockedOut: null,
-								onPrem: null,
-								offPrem: null,
 							},
 							loggedIn: {
 								default: true,
-								clockedIn: null,
-								clockedOut: null,
-								onPrem: null,
-								offPrem: null,
 							},
-							guest: null,
 						},
-						can: null,
 					},
 				],
 			}),

@@ -12,7 +12,6 @@ const getServiceEventContract = buildEventContract({
 			emitPermissionContract: buildPermissionContract({
 				id: 'appointments.getServiceEmitPermissions',
 				name: 'get service',
-				description: null,
 				requireAllPermissions: false,
 				permissions: [
 					{
@@ -22,27 +21,13 @@ const getServiceEventContract = buildEventContract({
 						requireAllStatuses: false,
 						defaults: {
 							skill: true,
-							owner: null,
-							groupManager: null,
-							manager: null,
-							teammate: null,
 							anonymous: {
 								default: true,
-								clockedIn: null,
-								clockedOut: null,
-								onPrem: null,
-								offPrem: null,
 							},
 							loggedIn: {
 								default: true,
-								clockedIn: null,
-								clockedOut: null,
-								onPrem: null,
-								offPrem: null,
 							},
-							guest: null,
 						},
-						can: null,
 					},
 				],
 			}),
