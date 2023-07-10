@@ -18,16 +18,16 @@ const getServiceEventContract = buildEventContract({
 						id: 'can-get-service',
 						name: 'Get a service',
 						description: 'Will this person be allowed to high five?',
-						requireAllStatuses: false,
 						defaults: {
-							skill: true,
-							anonymous: {
-								default: true,
-							},
 							loggedIn: {
 								default: true,
 							},
+							anonymous: {
+								default: true,
+							},
+							skill: true,
 						},
+						requireAllStatuses: false,
 					},
 				],
 			}),
