@@ -1,3 +1,5 @@
+## [2.0.1](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v2.0.0...v2.0.1) (2023-07-10)
+
 # [2.0.0](https://github.com/sprucelabsai-community/spruce-checkin-skill/compare/v1.0.6...v2.0.0) (2023-07-08)
 
 
