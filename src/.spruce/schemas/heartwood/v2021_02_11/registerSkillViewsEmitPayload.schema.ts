@@ -19,7 +19,11 @@ const registerSkillViewsEmitPayloadSchema: SpruceSchemas.Heartwood.v2021_02_11.R
 	            /** . */
 	            'source': {
 	                type: 'text',
-	                isRequired: true,
+	                options: undefined
+	            },
+	            /** . */
+	            'sourceUrl': {
+	                type: 'text',
 	                options: undefined
 	            },
 	            /** . */

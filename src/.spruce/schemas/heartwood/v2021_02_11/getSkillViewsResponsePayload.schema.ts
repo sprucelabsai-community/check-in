@@ -25,7 +25,11 @@ const getSkillViewsResponsePayloadSchema: SpruceSchemas.Heartwood.v2021_02_11.Ge
 	            /** . */
 	            'source': {
 	                type: 'text',
-	                isRequired: true,
+	                options: undefined
+	            },
+	            /** . */
+	            'sourceUrl': {
+	                type: 'text',
 	                options: undefined
 	            },
 	            /** . */

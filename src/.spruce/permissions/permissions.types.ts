@@ -11,68 +11,68 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'appointments.management': [
 			'can-configure-people-capabilities','can-configure-role-capabilities','can-register-capabilities','can-get-organization-settings',
 		]
-		'heartwood.skill-views': [
-			'can-get-skill-views','can-register-skill-views','can-listen-to-did-register-skill-views','can-generate-url','can-get-skill-views','can-list-skill-views','can-get-dashboard-cards','can-get-active-theme','can-manage-organization-themes',
+		'appointments.deleteCategoryEmitPermissions': [
+			'can-delete-category',
 		]
 		'appointments.createServiceEmitPermissions': [
 			'can-create-service',
 		]
-		'appointments.deleteCategoryEmitPermissions': [
-			'can-delete-category',
-		]
-		'appointments.listStatusesEmitPermissions': [
-			'can-list-statuses',
-		]
-		'appointments.listBookedServicesEmitPermissions': [
-			'can-list-booked-services',
-		]
-		'appointments.syncStatusesEmitPermissions': [
-			'can-high-five',
-		]
-		'appointments.updateServiceEmitPermissions': [
-			'can-edit-service',
-		]
-		'appointments.listServicesEmitPermissions': [
-			'can-list-services',
-		]
-		'appointments.createCategoryEmitPermissions': [
-			'can-create-category',
-		]
-		'appointments.getServiceEmitPermissions': [
-			'can-get-service',
-		]
-		'appointments.updateOrganizationSettingsEmitPermissions': [
-			'can-save-org-settings',
-		]
 		'appointments.deleteServiceEmitPermissions': [
 			'can-delete-service',
+		]
+		'appointments.getEmitPermissions': [
+			'can-get-appointment',
 		]
 		'appointments.getAvailableTimesEmitPermissions': [
 			'can-get-available-times',
 		]
-		'appointments.listRoleCapabilitiesEmitPermissions': [
-			'can-list-role-capabilities',
+		'appointments.getCategoryEmitPermissions': [
+			'can-get-category',
 		]
 		'appointments.listCategoriesEmitPermissions': [
 			'can-list-categories',
 		]
+		'appointments.getServiceEmitPermissions': [
+			'can-get-service',
+		]
 		'appointments.listPeopleCapabilitiesEmitPermissions': [
 			'can-list-people-capabilities',
 		]
-		'appointments.getCategoryEmitPermissions': [
-			'can-get-category',
+		'appointments.listRoleCapabilitiesEmitPermissions': [
+			'can-list-role-capabilities',
 		]
-		'appointments.updateCategoryEmitPermissions': [
-			'can-edit-category',
+		'appointments.listServicesEmitPermissions': [
+			'can-list-services',
+		]
+		'appointments.listBookedServicesEmitPermissions': [
+			'can-list-booked-services',
+		]
+		'appointments.createCategoryEmitPermissions': [
+			'can-create-category',
 		]
 		'appointments.willSendConfirmationListenPermissions': [
 			'can-listen-to-will-send',
 		]
+		'appointments.listStatusesEmitPermissions': [
+			'can-list-statuses',
+		]
+		'appointments.updateServiceEmitPermissions': [
+			'can-edit-service',
+		]
 		'appointments.listServicesWithProvidersEmitPermissions': [
 			'can-list-services-with-providers',
 		]
-		'appointments.getEmitPermissions': [
-			'can-get-appointment',
+		'appointments.updateCategoryEmitPermissions': [
+			'can-edit-category',
+		]
+		'appointments.syncStatusesEmitPermissions': [
+			'can-high-five',
+		]
+		'appointments.updateOrganizationSettingsEmitPermissions': [
+			'can-save-org-settings',
+		]
+		'heartwood.skill-views': [
+			'can-get-skill-views','can-register-skill-views','can-listen-to-did-register-skill-views','can-generate-url','can-get-skill-views','can-list-skill-views','can-get-dashboard-cards','can-get-active-theme','can-manage-organization-themes',
 		]
 	}
 }
