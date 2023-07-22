@@ -18,13 +18,13 @@ const listServicesEventContract = buildEventContract({
 						id: 'can-list-services',
 						name: 'Can list services',
 						defaults: {
-							skill: true,
-							anonymous: {
-								default: true,
-							},
 							loggedIn: {
 								default: true,
 							},
+							anonymous: {
+								default: true,
+							},
+							skill: true,
 						},
 					},
 				],
