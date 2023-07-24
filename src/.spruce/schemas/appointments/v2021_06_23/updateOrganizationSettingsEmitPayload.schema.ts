@@ -30,6 +30,13 @@ const updateOrganizationSettingsEmitPayloadSchema: SpruceSchemas.Appointments.v2
 	                hint: 'By default, a person only needs their number. Should I ask for their name too?',
 	                options: undefined
 	            },
+	            /** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
+	            'durationWhenNoServiceSelectedMinutes': {
+	                label: 'Fallback duration',
+	                type: 'number',
+	                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
+	                options: undefined
+	            },
 	    }
 }
 
