@@ -3721,6 +3721,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'guestAvailabilityInterval': ("15" | "30" | "60" | "custom")
 				/** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
 				'shouldRequireNameToBook'?: boolean| undefined | null
+				/** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
+				'durationWhenNoServiceSelectedMinutes'?: number| undefined | null
 		}
 
 		interface GetOrgSettingsSettingsSchema extends SpruceSchema.Schema {
@@ -3748,6 +3750,13 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                label: 'Require name to book',
 			                type: 'boolean',
 			                hint: 'By default, a person only needs their number. Should I ask for their name too?',
+			                options: undefined
+			            },
+			            /** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
+			            'durationWhenNoServiceSelectedMinutes': {
+			                label: 'Fallback duration',
+			                type: 'number',
+			                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
 			                options: undefined
 			            },
 			    }
@@ -6839,6 +6848,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'guestAvailabilityInterval': ("15" | "30" | "60" | "custom")
 				/** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
 				'shouldRequireNameToBook'?: boolean| undefined | null
+				/** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
+				'durationWhenNoServiceSelectedMinutes'?: number| undefined | null
 		}
 
 		interface UpdateOrganizationSettingsEmitPayloadSchema extends SpruceSchema.Schema {
@@ -6866,6 +6877,13 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                label: 'Require name to book',
 			                type: 'boolean',
 			                hint: 'By default, a person only needs their number. Should I ask for their name too?',
+			                options: undefined
+			            },
+			            /** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
+			            'durationWhenNoServiceSelectedMinutes': {
+			                label: 'Fallback duration',
+			                type: 'number',
+			                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
 			                options: undefined
 			            },
 			    }
@@ -8014,109 +8032,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Checkin.v2023_05_07 {
 
 		
-		interface GetGuestEmitTarget {
-			
-				
-				'locationId': string
-				
-				'guestId': string
-		}
-
-		interface GetGuestEmitTargetSchema extends SpruceSchema.Schema {
-			id: 'getGuestEmitTarget',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** . */
-			            'locationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'guestId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface GetGuestEmitTargetEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
-		interface GetGuestEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTarget
-		}
-
-		interface GetGuestEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'getGuestEmitTargetAndPayload',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema,}
-			            },
-			    }
-		}
-
-		interface GetGuestEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
-		interface GetGuestResponsePayload {
-			
-				
-				'guest': SpruceSchemas.Spruce.v2020_07_22.Person
-		}
-
-		interface GetGuestResponsePayloadSchema extends SpruceSchema.Schema {
-			id: 'getGuestResponsePayload',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** . */
-			            'guest': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Spruce.v2020_07_22.PersonSchema,}
-			            },
-			    }
-		}
-
-		interface GetGuestResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestResponsePayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
 		interface CheckinEmitTarget {
 			
 				
@@ -8242,6 +8157,109 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface CheckinResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.CheckinResponsePayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestEmitTarget {
+			
+				
+				'locationId': string
+				
+				'guestId': string
+		}
+
+		interface GetGuestEmitTargetSchema extends SpruceSchema.Schema {
+			id: 'getGuestEmitTarget',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** . */
+			            'locationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'guestId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface GetGuestEmitTargetEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTarget
+		}
+
+		interface GetGuestEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'getGuestEmitTargetAndPayload',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema,}
+			            },
+			    }
+		}
+
+		interface GetGuestEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestResponsePayload {
+			
+				
+				'guest': SpruceSchemas.Spruce.v2020_07_22.Person
+		}
+
+		interface GetGuestResponsePayloadSchema extends SpruceSchema.Schema {
+			id: 'getGuestResponsePayload',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** . */
+			            'guest': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Spruce.v2020_07_22.PersonSchema,}
+			            },
+			    }
+		}
+
+		interface GetGuestResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestResponsePayloadSchema> {}
 
 	}
 
