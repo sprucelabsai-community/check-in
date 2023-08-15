@@ -17,12 +17,12 @@ const updateOrganizationSettingsEventContract = buildEventContract({
 					{
 						id: 'can-save-org-settings',
 						name: 'Can save org settings',
+						requireAllStatuses: false,
 						defaults: {
 							owner: {
 								default: true,
 							},
 						},
-						requireAllStatuses: false,
 					},
 				],
 			}),
