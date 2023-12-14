@@ -18,10 +18,10 @@ const willSendConfirmationEventContract = buildEventContract({
 					{
 						id: 'can-listen-to-will-send',
 						name: 'Can listen to will send',
+						requireAllStatuses: false,
 						defaults: {
 							skill: true,
 						},
-						requireAllStatuses: false,
 					},
 				],
 			}),

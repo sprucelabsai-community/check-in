@@ -18,10 +18,10 @@ const updateCategoryEventContract = buildEventContract({
 						id: 'can-edit-category',
 						name: 'Can edit category',
 						defaults: {
-							loggedIn: {
+							anonymous: {
 								default: true,
 							},
-							anonymous: {
+							loggedIn: {
 								default: true,
 							},
 						},
