@@ -17,9 +17,7 @@ const getEventContract = buildEventContract({
 					{
 						id: 'can-get-appointment',
 						name: 'Can get apponitment',
-						requireAllStatuses: false,
 						defaults: {
-							skill: true,
 							owner: {
 								default: true,
 							},
@@ -35,7 +33,9 @@ const getEventContract = buildEventContract({
 							guest: {
 								default: true,
 							},
+							skill: true,
 						},
+						requireAllStatuses: false,
 					},
 				],
 			}),

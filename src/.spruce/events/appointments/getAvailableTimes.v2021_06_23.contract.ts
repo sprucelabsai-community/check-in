@@ -17,16 +17,16 @@ const getAvailableTimesEventContract = buildEventContract({
 					{
 						id: 'can-get-available-times',
 						name: 'Can available appointment times',
-						requireAllStatuses: false,
 						defaults: {
-							skill: true,
-							anonymous: {
-								default: true,
-							},
 							loggedIn: {
 								default: true,
 							},
+							anonymous: {
+								default: true,
+							},
+							skill: true,
 						},
+						requireAllStatuses: false,
 					},
 				],
 			}),
