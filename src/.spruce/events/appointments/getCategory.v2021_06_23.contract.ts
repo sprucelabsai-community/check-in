@@ -18,16 +18,16 @@ const getCategoryEventContract = buildEventContract({
 						id: 'can-get-category',
 						name: 'Can give high five',
 						description: 'Will this person be allowed to high five?',
+						requireAllStatuses: false,
 						defaults: {
-							loggedIn: {
-								default: true,
-							},
+							skill: true,
 							anonymous: {
 								default: true,
 							},
-							skill: true,
+							loggedIn: {
+								default: true,
+							},
 						},
-						requireAllStatuses: false,
 					},
 				],
 			}),
