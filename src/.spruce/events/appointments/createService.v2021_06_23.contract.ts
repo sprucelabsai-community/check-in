@@ -18,10 +18,10 @@ const createServiceEventContract = buildEventContract({
 						id: 'can-create-service',
 						name: 'Can create service',
 						defaults: {
-							loggedIn: {
+							anonymous: {
 								default: true,
 							},
-							anonymous: {
+							loggedIn: {
 								default: true,
 							},
 						},

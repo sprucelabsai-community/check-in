@@ -17,16 +17,16 @@ const listServicesWithProvidersEventContract = buildEventContract({
 					{
 						id: 'can-list-services-with-providers',
 						name: 'Can list services with providers',
+						requireAllStatuses: false,
 						defaults: {
+							skill: true,
 							anonymous: {
 								default: true,
 							},
-							skill: true,
 							loggedIn: {
 								default: true,
 							},
 						},
-						requireAllStatuses: false,
 					},
 				],
 			}),

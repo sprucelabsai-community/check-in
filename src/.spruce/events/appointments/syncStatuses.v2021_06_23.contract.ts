@@ -18,12 +18,12 @@ const syncStatusesEventContract = buildEventContract({
 						id: 'can-high-five',
 						name: 'Can give high five',
 						description: 'Will this person be allowed to high five?',
+						requireAllStatuses: false,
 						defaults: {
 							owner: {
 								default: true,
 							},
 						},
-						requireAllStatuses: false,
 					},
 				],
 			}),
