@@ -18,10 +18,10 @@ const updateServiceEventContract = buildEventContract({
 						id: 'can-edit-service',
 						name: 'Can edit service',
 						defaults: {
-							anonymous: {
+							loggedIn: {
 								default: true,
 							},
-							loggedIn: {
+							anonymous: {
 								default: true,
 							},
 						},

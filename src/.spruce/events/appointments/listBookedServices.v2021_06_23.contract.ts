@@ -17,9 +17,7 @@ const listBookedServicesEventContract = buildEventContract({
 					{
 						id: 'can-list-booked-services',
 						name: 'Can list booked services',
-						requireAllStatuses: false,
 						defaults: {
-							skill: true,
 							owner: {
 								default: true,
 							},
@@ -32,7 +30,9 @@ const listBookedServicesEventContract = buildEventContract({
 							teammate: {
 								default: true,
 							},
+							skill: true,
 						},
+						requireAllStatuses: false,
 					},
 				],
 			}),

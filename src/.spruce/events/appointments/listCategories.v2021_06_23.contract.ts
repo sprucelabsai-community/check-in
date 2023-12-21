@@ -18,13 +18,13 @@ const listCategoriesEventContract = buildEventContract({
 						id: 'can-list-categories',
 						name: 'Can list categories',
 						defaults: {
-							skill: true,
-							anonymous: {
-								default: true,
-							},
 							loggedIn: {
 								default: true,
 							},
+							anonymous: {
+								default: true,
+							},
+							skill: true,
 						},
 					},
 				],
