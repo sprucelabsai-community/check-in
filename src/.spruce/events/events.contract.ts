@@ -2,6 +2,9 @@ import { coreEventContracts } from '@sprucelabs/mercury-core-events'
 import appointmentsBookEventContract_v2021_06_23, {
 	BookEventContract as AppointmentsBookEventContract_v2021_06_23,
 } from '#spruce/events/appointments/book.v2021_06_23.contract'
+import appointmentsCalendarEventsForExportEventContract_v2021_06_23, {
+	CalendarEventsForExportEventContract as AppointmentsCalendarEventsForExportEventContract_v2021_06_23,
+} from '#spruce/events/appointments/calendarEventsForExport.v2021_06_23.contract'
 import appointmentsCancelHoldEventContract_v2021_06_23, {
 	CancelHoldEventContract as AppointmentsCancelHoldEventContract_v2021_06_23,
 } from '#spruce/events/appointments/cancelHold.v2021_06_23.contract'
@@ -35,6 +38,9 @@ import appointmentsDidBookEventContract_v2021_06_23, {
 import appointmentsDidUpdateEventContract_v2021_06_23, {
 	DidUpdateEventContract as AppointmentsDidUpdateEventContract_v2021_06_23,
 } from '#spruce/events/appointments/didUpdate.v2021_06_23.contract'
+import appointmentsExportEventContract_v2021_06_23, {
+	ExportEventContract as AppointmentsExportEventContract_v2021_06_23,
+} from '#spruce/events/appointments/export.v2021_06_23.contract'
 import appointmentsGetEventContract_v2021_06_23, {
 	GetEventContract as AppointmentsGetEventContract_v2021_06_23,
 } from '#spruce/events/appointments/get.v2021_06_23.contract'
@@ -124,6 +130,7 @@ import heartwoodUpsertThemeEventContract_v2021_02_11, { UpsertThemeEventContract
 
 export default [
 	appointmentsBookEventContract_v2021_06_23,
+	appointmentsCalendarEventsForExportEventContract_v2021_06_23,
 	appointmentsCancelHoldEventContract_v2021_06_23,
 	checkinCheckinEventContract_v2023_05_07,
 	appointmentsCreateEventContract_v2021_06_23,
@@ -137,6 +144,7 @@ export default [
 	appointmentsDidBookEventContract_v2021_06_23,
 	heartwoodDidRegisterSkillViewsEventContract_v2021_02_11,
 	appointmentsDidUpdateEventContract_v2021_06_23,
+	appointmentsExportEventContract_v2021_06_23,
 	heartwoodGenerateUrlEventContract_v2021_02_11,
 	appointmentsGetEventContract_v2021_06_23,
 	heartwoodGetActiveThemeEventContract_v2021_02_11,
@@ -176,6 +184,8 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 	interface SkillEventSignatures {
 		'appointments.book::v2021_06_23': AppointmentsBookEventContract_v2021_06_23['eventSignatures']['appointments.book::v2021_06_23']
 
+		'appointments.calendar-events-for-export::v2021_06_23': AppointmentsCalendarEventsForExportEventContract_v2021_06_23['eventSignatures']['appointments.calendar-events-for-export::v2021_06_23']
+
 		'appointments.cancel-hold::v2021_06_23': AppointmentsCancelHoldEventContract_v2021_06_23['eventSignatures']['appointments.cancel-hold::v2021_06_23']
 
 		'checkin.checkin::v2023_05_07': CheckinCheckinEventContract_v2023_05_07['eventSignatures']['checkin.checkin::v2023_05_07']
@@ -201,6 +211,8 @@ declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 		'heartwood.did-register-skill-views::v2021_02_11': HeartwoodDidRegisterSkillViewsEventContract_v2021_02_11['eventSignatures']['heartwood.did-register-skill-views::v2021_02_11']
 
 		'appointments.did-update::v2021_06_23': AppointmentsDidUpdateEventContract_v2021_06_23['eventSignatures']['appointments.did-update::v2021_06_23']
+
+		'appointments.export::v2021_06_23': AppointmentsExportEventContract_v2021_06_23['eventSignatures']['appointments.export::v2021_06_23']
 
 		'heartwood.generate-url::v2021_02_11': HeartwoodGenerateUrlEventContract_v2021_02_11['eventSignatures']['heartwood.generate-url::v2021_02_11']
 
