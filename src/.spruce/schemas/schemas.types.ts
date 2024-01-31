@@ -883,50 +883,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface GetOrganizationSettingsEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTarget
-				
-				'payload'?: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitPayload| undefined | null
-		}
-
-		interface GetOrganizationSettingsEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'getOrganizationSettingsEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface GetOrganizationSettingsEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface BookEmitTarget {
 			
 				
@@ -1023,6 +979,172 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface BookResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.BookResponsePayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CalendarEventsForExportEmitTarget {
+			
+				
+				'locationId': string
+				
+				'skillId': string
+		}
+
+		interface CalendarEventsForExportEmitTargetSchema extends SpruceSchema.Schema {
+			id: 'calendarEventsForExportEmitTarget',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'locationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'skillId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface CalendarEventsForExportEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CalendarEventsForExportEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTarget
+				
+				'payload': SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayload
+		}
+
+		interface CalendarEventsForExportEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'calendarEventsForExportEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface CalendarEventsForExportEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.MercuryChunkingEmitter.v2023_10_21 {
+
+		
+		interface ChunkPaging {
+			
+				
+				'total': number
+				
+				'current': number
+		}
+
+		interface ChunkPagingSchema extends SpruceSchema.Schema {
+			id: 'chunkPaging',
+			version: 'v2023_10_21',
+			namespace: 'MercuryChunkingEmitter',
+			name: 'Chunk Paging',
+			    fields: {
+			            /** . */
+			            'total': {
+			                type: 'number',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'current': {
+			                type: 'number',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface ChunkPagingEntity extends SchemaEntity<SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPagingSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CalendarEventsForExportEmitPayload {
+			
+				
+				'chunkingId': string
+				
+				'events': SpruceSchemas.CalendarUtils.v2021_05_19.CalendarEvent[]
+				
+				'chunk': SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPaging
+		}
+
+		interface CalendarEventsForExportEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'calendarEventsForExportEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'chunkingId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'events': {
+			                type: 'schema',
+			                isRequired: true,
+			                isArray: true,
+			                minArrayLength: 0,
+			                options: {schema: SpruceSchemas.CalendarUtils.v2021_05_19.CalendarEventSchema,}
+			            },
+			            /** . */
+			            'chunk': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPagingSchema,}
+			            },
+			    }
+		}
+
+		interface CalendarEventsForExportEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayloadSchema> {}
 
 	}
 
@@ -1169,51 +1291,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface CreateEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.CreateEmitTarget
-				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.CreateEmitPayload
-		}
-
-		interface CreateEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'createEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface CreateEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface CreateAppointmentService {
 			
 				
@@ -1288,6 +1365,51 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface CreateEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CreateEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.CreateEmitTarget
+				
+				'payload': SpruceSchemas.Appointments.v2021_06_23.CreateEmitPayload
+		}
+
+		interface CreateEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'createEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface CreateEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -1878,103 +2000,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface CreateRoleCapability {
-			
-				
-				'id': string
-				
-				'price'?: number| undefined | null
-				
-				'isEnabled': boolean
-				
-				'doesOffer': boolean
-				
-				'timeBlocks'?: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlock[]| undefined | null
-				
-				'serviceId': string
-		}
-
-		interface CreateRoleCapabilitySchema extends SpruceSchema.Schema {
-			id: 'createRoleCapability',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'id': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'price': {
-			                type: 'number',
-			                options: undefined
-			            },
-			            /** . */
-			            'isEnabled': {
-			                type: 'boolean',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'doesOffer': {
-			                type: 'boolean',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'timeBlocks': {
-			                type: 'schema',
-			                isArray: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlockSchema,}
-			            },
-			            /** . */
-			            'serviceId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface CreateRoleCapabilityEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilitySchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface CreateRoleCapabilityResponsePayload {
-			
-				
-				'capability': SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapability
-		}
-
-		interface CreateRoleCapabilityResponsePayloadSchema extends SpruceSchema.Schema {
-			id: 'createRoleCapabilityResponsePayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'capability': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilitySchema,}
-			            },
-			    }
-		}
-
-		interface CreateRoleCapabilityResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilityResponsePayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface CreatePersonCapability {
 			
 				
@@ -2072,43 +2097,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface CreateRoleCapabilityEmitTarget {
-			
-				
-				'roleId': string
-				
-				'organizationId': string
-		}
-
-		interface CreateRoleCapabilityEmitTargetSchema extends SpruceSchema.Schema {
-			id: 'createRoleCapabilityEmitTarget',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'roleId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'organizationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface CreateRoleCapabilityEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilityEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface CreateRoleCapabilityEmitPayload {
 			
 				
@@ -2169,6 +2157,43 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface CreateRoleCapabilityEmitTarget {
+			
+				
+				'roleId': string
+				
+				'organizationId': string
+		}
+
+		interface CreateRoleCapabilityEmitTargetSchema extends SpruceSchema.Schema {
+			id: 'createRoleCapabilityEmitTarget',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'roleId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'organizationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface CreateRoleCapabilityEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilityEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface CreateRoleCapabilityEmitTargetAndPayload {
 			
 				/** Source. */
@@ -2207,6 +2232,103 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface CreateRoleCapabilityEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilityEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CreateRoleCapability {
+			
+				
+				'id': string
+				
+				'price'?: number| undefined | null
+				
+				'isEnabled': boolean
+				
+				'doesOffer': boolean
+				
+				'timeBlocks'?: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlock[]| undefined | null
+				
+				'serviceId': string
+		}
+
+		interface CreateRoleCapabilitySchema extends SpruceSchema.Schema {
+			id: 'createRoleCapability',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'id': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'price': {
+			                type: 'number',
+			                options: undefined
+			            },
+			            /** . */
+			            'isEnabled': {
+			                type: 'boolean',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'doesOffer': {
+			                type: 'boolean',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'timeBlocks': {
+			                type: 'schema',
+			                isArray: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlockSchema,}
+			            },
+			            /** . */
+			            'serviceId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface CreateRoleCapabilityEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilitySchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface CreateRoleCapabilityResponsePayload {
+			
+				
+				'capability': SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapability
+		}
+
+		interface CreateRoleCapabilityResponsePayloadSchema extends SpruceSchema.Schema {
+			id: 'createRoleCapabilityResponsePayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'capability': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilitySchema,}
+			            },
+			    }
+		}
+
+		interface CreateRoleCapabilityResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CreateRoleCapabilityResponsePayloadSchema> {}
 
 	}
 
@@ -2702,35 +2824,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface DidBookAppointmentTarget {
-			
-				
-				'locationId': string
-		}
-
-		interface DidBookAppointmentTargetSchema extends SpruceSchema.Schema {
-			id: 'didBookAppointmentTarget',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'locationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface DidBookAppointmentTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookAppointmentTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface DidBookEmitTarget {
 			
 				
@@ -2753,35 +2846,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface DidBookEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface DidBookEmitPayload {
-			
-				
-				'appointment': SpruceSchemas.Appointments.v2021_06_23.DidBookAppointment
-		}
-
-		interface DidBookEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'didBookEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'appointment': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.DidBookAppointmentSchema,}
-			            },
-			    }
-		}
-
-		interface DidBookEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookEmitPayloadSchema> {}
 
 	}
 
@@ -2827,6 +2891,35 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface DidBookEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface DidBookAppointmentTarget {
+			
+				
+				'locationId': string
+		}
+
+		interface DidBookAppointmentTargetSchema extends SpruceSchema.Schema {
+			id: 'didBookAppointmentTarget',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'locationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface DidBookAppointmentTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookAppointmentTargetSchema> {}
 
 	}
 
@@ -2955,6 +3048,35 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface DidBookEmitPayload {
+			
+				
+				'appointment': SpruceSchemas.Appointments.v2021_06_23.DidBookAppointment
+		}
+
+		interface DidBookEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'didBookEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'appointment': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.DidBookAppointmentSchema,}
+			            },
+			    }
+		}
+
+		interface DidBookEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidBookEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface DidUpdateEmitPayload {
 			
 				
@@ -2977,6 +3099,109 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface DidUpdateEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.DidUpdateEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface ExportEmitTarget {
+			
+				
+				'locationId': string
+		}
+
+		interface ExportEmitTargetSchema extends SpruceSchema.Schema {
+			id: 'exportEmitTarget',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'locationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface ExportEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface ExportEmitPayload {
+			
+				
+				'daysBack': ("90")
+		}
+
+		interface ExportEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'exportEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'daysBack': {
+			                type: 'select',
+			                isRequired: true,
+			                options: {choices: [{"label":"90 days","value":"90"}],}
+			            },
+			    }
+		}
+
+		interface ExportEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface ExportEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.ExportEmitTarget
+				
+				'payload': SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayload
+		}
+
+		interface ExportEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'exportEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface ExportEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -3122,6 +3347,53 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface GetAvailabilityForMonthEmitPayload {
+			
+				
+				'year': number
+				
+				'month': number
+				
+				'providersAndServices': SpruceSchemas.Appointments.v2021_06_23.OptionalProvidersAndServices[]
+		}
+
+		interface GetAvailabilityForMonthEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'getAvailabilityForMonthEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'year': {
+			                type: 'number',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'month': {
+			                type: 'number',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'providersAndServices': {
+			                type: 'schema',
+			                isRequired: true,
+			                isArray: true,
+			                minArrayLength: 0,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.OptionalProvidersAndServicesSchema,}
+			            },
+			    }
+		}
+
+		interface GetAvailabilityForMonthEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetAvailabilityForMonthEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface GetAvailabilityForMonthEmitTargetAndPayload {
 			
 				/** Source. */
@@ -3226,6 +3498,51 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface GetAvailableTimesEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTarget
+				
+				'payload': SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitPayload
+		}
+
+		interface GetAvailableTimesEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'getAvailableTimesEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface GetAvailableTimesEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface OptionalProvidersAndServices {
 			
 				
@@ -3254,53 +3571,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface OptionalProvidersAndServicesEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.OptionalProvidersAndServicesSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface GetAvailabilityForMonthEmitPayload {
-			
-				
-				'year': number
-				
-				'month': number
-				
-				'providersAndServices': SpruceSchemas.Appointments.v2021_06_23.OptionalProvidersAndServices[]
-		}
-
-		interface GetAvailabilityForMonthEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'getAvailabilityForMonthEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'year': {
-			                type: 'number',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'month': {
-			                type: 'number',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'providersAndServices': {
-			                type: 'schema',
-			                isRequired: true,
-			                isArray: true,
-			                minArrayLength: 0,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.OptionalProvidersAndServicesSchema,}
-			            },
-			    }
-		}
-
-		interface GetAvailabilityForMonthEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetAvailabilityForMonthEmitPayloadSchema> {}
 
 	}
 
@@ -3363,51 +3633,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface GetAvailableTimesEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface GetAvailableTimesEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTarget
-				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitPayload
-		}
-
-		interface GetAvailableTimesEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'getAvailableTimesEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface GetAvailableTimesEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetAvailableTimesEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -3706,6 +3931,50 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface GetOrganizationSettingsEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface GetOrganizationSettingsEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTarget
+				
+				'payload'?: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitPayload| undefined | null
+		}
+
+		interface GetOrganizationSettingsEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'getOrganizationSettingsEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface GetOrganizationSettingsEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetOrganizationSettingsEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -4066,6 +4335,35 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface GetServiceColorsResponsePayload {
+			
+				
+				'colorsByService': SpruceSchemas.Appointments.v2021_06_23.ColorsByService
+		}
+
+		interface GetServiceColorsResponsePayloadSchema extends SpruceSchema.Schema {
+			id: 'getServiceColorsResponsePayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'colorsByService': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ColorsByServiceSchema,}
+			            },
+			    }
+		}
+
+		interface GetServiceColorsResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetServiceColorsResponsePayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface ServiceColors {
 			
 				
@@ -4118,35 +4416,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			},		}
 
 		interface ColorsByServiceEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ColorsByServiceSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface GetServiceColorsResponsePayload {
-			
-				
-				'colorsByService': SpruceSchemas.Appointments.v2021_06_23.ColorsByService
-		}
-
-		interface GetServiceColorsResponsePayloadSchema extends SpruceSchema.Schema {
-			id: 'getServiceColorsResponsePayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'colorsByService': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ColorsByServiceSchema,}
-			            },
-			    }
-		}
-
-		interface GetServiceColorsResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.GetServiceColorsResponsePayloadSchema> {}
 
 	}
 
@@ -5470,37 +5739,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface ListServicesWithProvidersResponsePayload {
-			
-				
-				'services': SpruceSchemas.Appointments.v2021_06_23.ServiceWithProviders[]
-		}
-
-		interface ListServicesWithProvidersResponsePayloadSchema extends SpruceSchema.Schema {
-			id: 'listServicesWithProvidersResponsePayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'services': {
-			                type: 'schema',
-			                isRequired: true,
-			                isArray: true,
-			                minArrayLength: 0,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ServiceWithProvidersSchema,}
-			            },
-			    }
-		}
-
-		interface ListServicesWithProvidersResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ListServicesWithProvidersResponsePayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface ServiceWithProvidersProvider {
 			
 				
@@ -5657,6 +5895,37 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface ServiceWithProvidersEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ServiceWithProvidersSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface ListServicesWithProvidersResponsePayload {
+			
+				
+				'services': SpruceSchemas.Appointments.v2021_06_23.ServiceWithProviders[]
+		}
+
+		interface ListServicesWithProvidersResponsePayloadSchema extends SpruceSchema.Schema {
+			id: 'listServicesWithProvidersResponsePayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'services': {
+			                type: 'schema',
+			                isRequired: true,
+			                isArray: true,
+			                minArrayLength: 0,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ServiceWithProvidersSchema,}
+			            },
+			    }
+		}
+
+		interface ListServicesWithProvidersResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ListServicesWithProvidersResponsePayloadSchema> {}
 
 	}
 
@@ -6361,6 +6630,65 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface UpdateEmitPayload {
+			
+				
+				'appointmentServiceIdsToRemove'?: string[]| undefined | null
+				
+				'shouldNotifyGuestOfChanges'?: boolean| undefined | null
+				
+				'addServiceWithProvider'?: SpruceSchemas.Appointments.v2021_06_23.AddServiceWithProvider| undefined | null
+				
+				'statuses'?: string[]| undefined | null
+				
+				'guestId'?: string| undefined | null
+		}
+
+		interface UpdateEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'updateEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'appointmentServiceIdsToRemove': {
+			                type: 'id',
+			                isArray: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'shouldNotifyGuestOfChanges': {
+			                type: 'boolean',
+			                options: undefined
+			            },
+			            /** . */
+			            'addServiceWithProvider': {
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.AddServiceWithProviderSchema,}
+			            },
+			            /** . */
+			            'statuses': {
+			                type: 'id',
+			                isArray: true,
+			                minArrayLength: 0,
+			                options: undefined
+			            },
+			            /** . */
+			            'guestId': {
+			                type: 'id',
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface UpdateEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateEmitPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface UpdateEmitTargetAndPayload {
 			
 				/** Source. */
@@ -6435,65 +6763,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface AddServiceWithProviderEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.AddServiceWithProviderSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface UpdateEmitPayload {
-			
-				
-				'appointmentServiceIdsToRemove'?: string[]| undefined | null
-				
-				'shouldNotifyGuestOfChanges'?: boolean| undefined | null
-				
-				'addServiceWithProvider'?: SpruceSchemas.Appointments.v2021_06_23.AddServiceWithProvider| undefined | null
-				
-				'statuses'?: string[]| undefined | null
-				
-				'guestId'?: string| undefined | null
-		}
-
-		interface UpdateEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'updateEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'appointmentServiceIdsToRemove': {
-			                type: 'id',
-			                isArray: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'shouldNotifyGuestOfChanges': {
-			                type: 'boolean',
-			                options: undefined
-			            },
-			            /** . */
-			            'addServiceWithProvider': {
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.AddServiceWithProviderSchema,}
-			            },
-			            /** . */
-			            'statuses': {
-			                type: 'id',
-			                isArray: true,
-			                minArrayLength: 0,
-			                options: undefined
-			            },
-			            /** . */
-			            'guestId': {
-			                type: 'id',
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface UpdateEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateEmitPayloadSchema> {}
 
 	}
 
@@ -7008,63 +7277,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface UpdatePersonCapabilityEmitPayload {
-			
-				
-				'price'?: number| undefined | null
-				
-				'isEnabled'?: boolean| undefined | null
-				
-				'doesOffer'?: boolean| undefined | null
-				
-				'timeBlocks'?: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlock[]| undefined | null
-				
-				'serviceId'?: string| undefined | null
-		}
-
-		interface UpdatePersonCapabilityEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'updatePersonCapabilityEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'price': {
-			                type: 'number',
-			                options: undefined
-			            },
-			            /** . */
-			            'isEnabled': {
-			                type: 'boolean',
-			                options: undefined
-			            },
-			            /** . */
-			            'doesOffer': {
-			                type: 'boolean',
-			                options: undefined
-			            },
-			            /** . */
-			            'timeBlocks': {
-			                type: 'schema',
-			                isArray: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlockSchema,}
-			            },
-			            /** . */
-			            'serviceId': {
-			                type: 'id',
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface UpdatePersonCapabilityEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdatePersonCapabilityEmitPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface UpdatePersonCapabilityEmitTargetAndPayload {
 			
 				/** Source. */
@@ -7243,6 +7455,50 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface UpdateRoleCapabilityEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTarget
+				
+				'payload'?: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitPayload| undefined | null
+		}
+
+		interface UpdateRoleCapabilityEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'updateRoleCapabilityEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface UpdateRoleCapabilityEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface CapabilityTimeBlock {
 			
 				
@@ -7280,6 +7536,63 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface CapabilityTimeBlockEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlockSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface UpdatePersonCapabilityEmitPayload {
+			
+				
+				'price'?: number| undefined | null
+				
+				'isEnabled'?: boolean| undefined | null
+				
+				'doesOffer'?: boolean| undefined | null
+				
+				'timeBlocks'?: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlock[]| undefined | null
+				
+				'serviceId'?: string| undefined | null
+		}
+
+		interface UpdatePersonCapabilityEmitPayloadSchema extends SpruceSchema.Schema {
+			id: 'updatePersonCapabilityEmitPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** . */
+			            'price': {
+			                type: 'number',
+			                options: undefined
+			            },
+			            /** . */
+			            'isEnabled': {
+			                type: 'boolean',
+			                options: undefined
+			            },
+			            /** . */
+			            'doesOffer': {
+			                type: 'boolean',
+			                options: undefined
+			            },
+			            /** . */
+			            'timeBlocks': {
+			                type: 'schema',
+			                isArray: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CapabilityTimeBlockSchema,}
+			            },
+			            /** . */
+			            'serviceId': {
+			                type: 'id',
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface UpdatePersonCapabilityEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdatePersonCapabilityEmitPayloadSchema> {}
 
 	}
 
@@ -7337,50 +7650,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface UpdateRoleCapabilityEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface UpdateRoleCapabilityEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTarget
-				
-				'payload'?: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitPayload| undefined | null
-		}
-
-		interface UpdateRoleCapabilityEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'updateRoleCapabilityEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface UpdateRoleCapabilityEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateRoleCapabilityEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -7515,6 +7784,50 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface UpdateServiceEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
+		interface UpdateServiceEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTarget
+				
+				'payload'?: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitPayload| undefined | null
+		}
+
+		interface UpdateServiceEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'updateServiceEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface UpdateServiceEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTargetAndPayloadSchema> {}
 
 	}
 
@@ -7687,50 +8000,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface UpdateServiceEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTarget
-				
-				'payload'?: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitPayload| undefined | null
-		}
-
-		interface UpdateServiceEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'updateServiceEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface UpdateServiceEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.UpdateServiceEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface GetServiceService {
 			
 				
@@ -7866,51 +8135,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
-		interface WillSendConfirmationEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTarget
-				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitPayload
-		}
-
-		interface WillSendConfirmationEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'willSendConfirmationEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface WillSendConfirmationEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
 		interface ProviderAndService {
 			
 				
@@ -7986,6 +8210,51 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Appointments.v2021_06_23 {
 
 		
+		interface WillSendConfirmationEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTarget
+				
+				'payload': SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitPayload
+		}
+
+		interface WillSendConfirmationEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'willSendConfirmationEmitTargetAndPayload',
+			version: 'v2021_06_23',
+			namespace: 'Appointments',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTargetSchema,}
+			            },
+			            /** . */
+			            'payload': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitPayloadSchema,}
+			            },
+			    }
+		}
+
+		interface WillSendConfirmationEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Appointments.v2021_06_23 {
+
+		
 		interface WillSendConfirmationResponsePayload {
 			
 				
@@ -8025,275 +8294,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface WillSendConfirmationResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.WillSendConfirmationResponsePayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface CalendarEventsForExportEmitTarget {
-			
-				
-				'locationId': string
-				
-				'skillId': string
-		}
-
-		interface CalendarEventsForExportEmitTargetSchema extends SpruceSchema.Schema {
-			id: 'calendarEventsForExportEmitTarget',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'locationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'skillId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface CalendarEventsForExportEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface CalendarEventsForExportEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTarget
-				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayload
-		}
-
-		interface CalendarEventsForExportEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'calendarEventsForExportEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface CalendarEventsForExportEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.MercuryChunkingEmitter.v2023_10_21 {
-
-		
-		interface ChunkPaging {
-			
-				
-				'total': number
-				
-				'current': number
-		}
-
-		interface ChunkPagingSchema extends SpruceSchema.Schema {
-			id: 'chunkPaging',
-			version: 'v2023_10_21',
-			namespace: 'MercuryChunkingEmitter',
-			name: 'Chunk Paging',
-			    fields: {
-			            /** . */
-			            'total': {
-			                type: 'number',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'current': {
-			                type: 'number',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface ChunkPagingEntity extends SchemaEntity<SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPagingSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface CalendarEventsForExportEmitPayload {
-			
-				
-				'chunkingId': string
-				
-				'events': SpruceSchemas.CalendarUtils.v2021_05_19.CalendarEvent[]
-				
-				'chunk': SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPaging
-		}
-
-		interface CalendarEventsForExportEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'calendarEventsForExportEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'chunkingId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'events': {
-			                type: 'schema',
-			                isRequired: true,
-			                isArray: true,
-			                minArrayLength: 0,
-			                options: {schema: SpruceSchemas.CalendarUtils.v2021_05_19.CalendarEventSchema,}
-			            },
-			            /** . */
-			            'chunk': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.MercuryChunkingEmitter.v2023_10_21.ChunkPagingSchema,}
-			            },
-			    }
-		}
-
-		interface CalendarEventsForExportEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.CalendarEventsForExportEmitPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface ExportEmitTarget {
-			
-				
-				'locationId': string
-		}
-
-		interface ExportEmitTargetSchema extends SpruceSchema.Schema {
-			id: 'exportEmitTarget',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'locationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface ExportEmitTargetEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface ExportEmitPayload {
-			
-				
-				'daysBack': ("90")
-		}
-
-		interface ExportEmitPayloadSchema extends SpruceSchema.Schema {
-			id: 'exportEmitPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** . */
-			            'daysBack': {
-			                type: 'select',
-			                isRequired: true,
-			                options: {choices: [{"label":"90 days","value":"90"}],}
-			            },
-			    }
-		}
-
-		interface ExportEmitPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Appointments.v2021_06_23 {
-
-		
-		interface ExportEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Appointments.v2021_06_23.ExportEmitTarget
-				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayload
-		}
-
-		interface ExportEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'exportEmitTargetAndPayload',
-			version: 'v2021_06_23',
-			namespace: 'Appointments',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetSchema,}
-			            },
-			            /** . */
-			            'payload': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.ExportEmitPayloadSchema,}
-			            },
-			    }
-		}
-
-		interface ExportEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Appointments.v2021_06_23.ExportEmitTargetAndPayloadSchema> {}
 
 	}
 
