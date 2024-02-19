@@ -2,9 +2,6 @@ import { coreEventContracts } from '@sprucelabs/mercury-core-events'
 import appointmentsBookEventContract_v2021_06_23, {
 	BookEventContract as AppointmentsBookEventContract_v2021_06_23,
 } from '#spruce/events/appointments/book.v2021_06_23.contract'
-import appointmentsCalendarEventsForExportEventContract_v2021_06_23, {
-	CalendarEventsForExportEventContract as AppointmentsCalendarEventsForExportEventContract_v2021_06_23,
-} from '#spruce/events/appointments/calendarEventsForExport.v2021_06_23.contract'
 import appointmentsCancelHoldEventContract_v2021_06_23, {
 	CancelHoldEventContract as AppointmentsCancelHoldEventContract_v2021_06_23,
 } from '#spruce/events/appointments/cancelHold.v2021_06_23.contract'
@@ -130,7 +127,6 @@ import heartwoodUpsertThemeEventContract_v2021_02_11, { UpsertThemeEventContract
 
 export default [
 	appointmentsBookEventContract_v2021_06_23,
-	appointmentsCalendarEventsForExportEventContract_v2021_06_23,
 	appointmentsCancelHoldEventContract_v2021_06_23,
 	checkinCheckinEventContract_v2023_05_07,
 	appointmentsCreateEventContract_v2021_06_23,
@@ -183,8 +179,6 @@ export default [
 declare module '@sprucelabs/mercury-types/build/types/mercury.types' {
 	interface SkillEventSignatures {
 		'appointments.book::v2021_06_23': AppointmentsBookEventContract_v2021_06_23['eventSignatures']['appointments.book::v2021_06_23']
-
-		'appointments.calendar-events-for-export::v2021_06_23': AppointmentsCalendarEventsForExportEventContract_v2021_06_23['eventSignatures']['appointments.calendar-events-for-export::v2021_06_23']
 
 		'appointments.cancel-hold::v2021_06_23': AppointmentsCancelHoldEventContract_v2021_06_23['eventSignatures']['appointments.cancel-hold::v2021_06_23']
 
