@@ -9,10 +9,9 @@ const updateOrganizationSettingsResponsePayloadSchema: SpruceSchemas.Appointment
 	namespace: 'Appointments',
 	name: '',
 	    fields: {
-	            /** Update me. */
-	            'aTextField': {
-	                label: 'Update me',
-	                type: 'text',
+	            /** . */
+	            'success': {
+	                type: 'boolean',
 	                options: undefined
 	            },
 	    }

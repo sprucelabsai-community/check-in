@@ -26,7 +26,6 @@ const updateOrganizationSettingsEmitTargetAndPayloadSchema: SpruceSchemas.Appoin
 	            /** . */
 	            'payload': {
 	                type: 'schema',
-	                isRequired: true,
 	                options: {schema: updateOrganizationSettingsEmitPayloadSchema_v2021_06_23,}
 	            },
 	    }
