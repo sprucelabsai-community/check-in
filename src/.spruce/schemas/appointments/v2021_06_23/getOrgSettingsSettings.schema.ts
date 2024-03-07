@@ -37,6 +37,25 @@ const getOrgSettingsSettingsSchema: SpruceSchemas.Appointments.v2021_06_23.GetOr
 	                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
 	                options: undefined
 	            },
+	            /** Show notice. */
+	            'shouldRenderGuestBookingNotice': {
+	                label: 'Show notice',
+	                type: 'boolean',
+	                options: undefined
+	            },
+	            /** Notice message. This message will be shown to guests when they book an appointment. */
+	            'guestBookingNoticeMessage': {
+	                label: 'Notice message',
+	                type: 'text',
+	                hint: 'This message will be shown to guests when they book an appointment.',
+	                options: undefined
+	            },
+	            /** Redirect URL. */
+	            'guestBookingNoticeRedirect': {
+	                label: 'Redirect URL',
+	                type: 'text',
+	                options: undefined
+	            },
 	    }
 }
 

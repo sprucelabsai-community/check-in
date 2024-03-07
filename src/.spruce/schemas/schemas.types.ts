@@ -3826,6 +3826,12 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'shouldRequireNameToBook'?: boolean| undefined | null
 				/** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
 				'durationWhenNoServiceSelectedMinutes'?: number| undefined | null
+				/** Show notice. */
+				'shouldRenderGuestBookingNotice'?: boolean| undefined | null
+				/** Notice message. This message will be shown to guests when they book an appointment. */
+				'guestBookingNoticeMessage'?: string| undefined | null
+				/** Redirect URL. */
+				'guestBookingNoticeRedirect'?: string| undefined | null
 		}
 
 		interface GetOrgSettingsSettingsSchema extends SpruceSchema.Schema {
@@ -3860,6 +3866,25 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                label: 'Fallback duration',
 			                type: 'number',
 			                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
+			                options: undefined
+			            },
+			            /** Show notice. */
+			            'shouldRenderGuestBookingNotice': {
+			                label: 'Show notice',
+			                type: 'boolean',
+			                options: undefined
+			            },
+			            /** Notice message. This message will be shown to guests when they book an appointment. */
+			            'guestBookingNoticeMessage': {
+			                label: 'Notice message',
+			                type: 'text',
+			                hint: 'This message will be shown to guests when they book an appointment.',
+			                options: undefined
+			            },
+			            /** Redirect URL. */
+			            'guestBookingNoticeRedirect': {
+			                label: 'Redirect URL',
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -6946,13 +6971,19 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		interface UpdateOrganizationSettingsEmitPayload {
 			
 				/** Approval. */
-				'approvalStrategy': ("auto-approve" | "required-all" | "required-first")
+				'approvalStrategy'?: ("auto-approve" | "required-all" | "required-first")| undefined | null
 				/** Available times for guests. */
-				'guestAvailabilityInterval': ("15" | "30" | "60" | "custom")
+				'guestAvailabilityInterval'?: ("15" | "30" | "60" | "custom")| undefined | null
 				/** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
 				'shouldRequireNameToBook'?: boolean| undefined | null
 				/** Fallback duration. When someone is booking and hasn't selected a service, by default I'll look for the the times each provider can do their shortest service. If you set this, I'll use this duration instead. It may make sense to set this to the duration of your most popular service. */
 				'durationWhenNoServiceSelectedMinutes'?: number| undefined | null
+				/** Show notice. */
+				'shouldRenderGuestBookingNotice'?: boolean| undefined | null
+				/** Notice message. This message will be shown to guests when they book an appointment. */
+				'guestBookingNoticeMessage'?: string| undefined | null
+				/** Redirect URL. */
+				'guestBookingNoticeRedirect'?: string| undefined | null
 		}
 
 		interface UpdateOrganizationSettingsEmitPayloadSchema extends SpruceSchema.Schema {
@@ -6965,14 +6996,12 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            'approvalStrategy': {
 			                label: 'Approval',
 			                type: 'select',
-			                isRequired: true,
 			                options: {choices: [{"label":"Auto-approve all appointments","value":"auto-approve"},{"label":"Require approval on all appointments","value":"required-all"},{"label":"Require approval on first appointment only","value":"required-first"}],}
 			            },
 			            /** Available times for guests. */
 			            'guestAvailabilityInterval': {
 			                label: 'Available times for guests',
 			                type: 'select',
-			                isRequired: true,
 			                options: {choices: [{"label":"Every 15 minutes","value":"15"},{"label":"Every 30 minutes","value":"30"},{"label":"Every hour","value":"60"},{"label":"Custom","value":"custom"}],}
 			            },
 			            /** Require name to book. By default, a person only needs their number. Should I ask for their name too? */
@@ -6987,6 +7016,25 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                label: 'Fallback duration',
 			                type: 'number',
 			                hint: 'When someone is booking and hasn\'t selected a service, by default I\'ll look for the the times each provider can do their shortest service. If you set this, I\'ll use this duration instead. It may make sense to set this to the duration of your most popular service.',
+			                options: undefined
+			            },
+			            /** Show notice. */
+			            'shouldRenderGuestBookingNotice': {
+			                label: 'Show notice',
+			                type: 'boolean',
+			                options: undefined
+			            },
+			            /** Notice message. This message will be shown to guests when they book an appointment. */
+			            'guestBookingNoticeMessage': {
+			                label: 'Notice message',
+			                type: 'text',
+			                hint: 'This message will be shown to guests when they book an appointment.',
+			                options: undefined
+			            },
+			            /** Redirect URL. */
+			            'guestBookingNoticeRedirect': {
+			                label: 'Redirect URL',
+			                type: 'text',
 			                options: undefined
 			            },
 			    }
@@ -7007,7 +7055,7 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				
 				'target': SpruceSchemas.Appointments.v2021_06_23.UpdateOrganizationSettingsEmitTarget
 				
-				'payload': SpruceSchemas.Appointments.v2021_06_23.UpdateOrganizationSettingsEmitPayload
+				'payload'?: SpruceSchemas.Appointments.v2021_06_23.UpdateOrganizationSettingsEmitPayload| undefined | null
 		}
 
 		interface UpdateOrganizationSettingsEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
@@ -7031,7 +7079,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			            /** . */
 			            'payload': {
 			                type: 'schema',
-			                isRequired: true,
 			                options: {schema: SpruceSchemas.Appointments.v2021_06_23.UpdateOrganizationSettingsEmitPayloadSchema,}
 			            },
 			    }
@@ -7047,8 +7094,8 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		
 		interface UpdateOrganizationSettingsResponsePayload {
 			
-				/** Update me. */
-				'aTextField'?: string| undefined | null
+				
+				'success'?: boolean| undefined | null
 		}
 
 		interface UpdateOrganizationSettingsResponsePayloadSchema extends SpruceSchema.Schema {
@@ -7057,10 +7104,9 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			namespace: 'Appointments',
 			name: '',
 			    fields: {
-			            /** Update me. */
-			            'aTextField': {
-			                label: 'Update me',
-			                type: 'text',
+			            /** . */
+			            'success': {
+			                type: 'boolean',
 			                options: undefined
 			            },
 			    }
