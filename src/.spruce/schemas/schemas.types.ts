@@ -3830,7 +3830,7 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'shouldRenderGuestBookingNotice'?: boolean| undefined | null
 				/** Notice message. This message will be shown to guests when they book an appointment. */
 				'guestBookingNoticeMessage'?: string| undefined | null
-				/** Redirect URL. */
+				/** Redirect URL. If you set a redirect URL, booking will be disabled entirely. */
 				'guestBookingNoticeRedirect'?: string| undefined | null
 		}
 
@@ -3881,10 +3881,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                hint: 'This message will be shown to guests when they book an appointment.',
 			                options: undefined
 			            },
-			            /** Redirect URL. */
+			            /** Redirect URL. If you set a redirect URL, booking will be disabled entirely. */
 			            'guestBookingNoticeRedirect': {
 			                label: 'Redirect URL',
 			                type: 'text',
+			                hint: 'If you set a redirect URL, booking will be disabled entirely.',
 			                options: undefined
 			            },
 			    }
@@ -6982,7 +6983,7 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 				'shouldRenderGuestBookingNotice'?: boolean| undefined | null
 				/** Notice message. This message will be shown to guests when they book an appointment. */
 				'guestBookingNoticeMessage'?: string| undefined | null
-				/** Redirect URL. */
+				/** Redirect URL. If you set a redirect URL, booking will be disabled entirely. */
 				'guestBookingNoticeRedirect'?: string| undefined | null
 		}
 
@@ -7031,10 +7032,11 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 			                hint: 'This message will be shown to guests when they book an appointment.',
 			                options: undefined
 			            },
-			            /** Redirect URL. */
+			            /** Redirect URL. If you set a redirect URL, booking will be disabled entirely. */
 			            'guestBookingNoticeRedirect': {
 			                label: 'Redirect URL',
 			                type: 'text',
+			                hint: 'If you set a redirect URL, booking will be disabled entirely.',
 			                options: undefined
 			            },
 			    }
@@ -8181,109 +8183,6 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 	namespace SpruceSchemas.Checkin.v2023_05_07 {
 
 		
-		interface GetGuestEmitTarget {
-			
-				
-				'locationId': string
-				
-				'guestId': string
-		}
-
-		interface GetGuestEmitTargetSchema extends SpruceSchema.Schema {
-			id: 'getGuestEmitTarget',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** . */
-			            'locationId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			            /** . */
-			            'guestId': {
-			                type: 'id',
-			                isRequired: true,
-			                options: undefined
-			            },
-			    }
-		}
-
-		interface GetGuestEmitTargetEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
-		interface GetGuestEmitTargetAndPayload {
-			
-				/** Source. */
-				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
-				
-				'target': SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTarget
-		}
-
-		interface GetGuestEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
-			id: 'getGuestEmitTargetAndPayload',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** Source. */
-			            'source': {
-			                label: 'Source',
-			                type: 'schema',
-			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
-			            },
-			            /** . */
-			            'target': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema,}
-			            },
-			    }
-		}
-
-		interface GetGuestEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetAndPayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
-		interface GetGuestResponsePayload {
-			
-				
-				'guest': SpruceSchemas.Spruce.v2020_07_22.Person
-		}
-
-		interface GetGuestResponsePayloadSchema extends SpruceSchema.Schema {
-			id: 'getGuestResponsePayload',
-			version: 'v2023_05_07',
-			namespace: 'Checkin',
-			name: '',
-			    fields: {
-			            /** . */
-			            'guest': {
-			                type: 'schema',
-			                isRequired: true,
-			                options: {schema: SpruceSchemas.Spruce.v2020_07_22.PersonSchema,}
-			            },
-			    }
-		}
-
-		interface GetGuestResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestResponsePayloadSchema> {}
-
-	}
-
-
-	namespace SpruceSchemas.Checkin.v2023_05_07 {
-
-		
 		interface CheckinEmitTarget {
 			
 				
@@ -8409,6 +8308,109 @@ declare module '@sprucelabs/spruce-core-schemas/build/.spruce/schemas/core.schem
 		}
 
 		interface CheckinResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.CheckinResponsePayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestEmitTarget {
+			
+				
+				'locationId': string
+				
+				'guestId': string
+		}
+
+		interface GetGuestEmitTargetSchema extends SpruceSchema.Schema {
+			id: 'getGuestEmitTarget',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** . */
+			            'locationId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			            /** . */
+			            'guestId': {
+			                type: 'id',
+			                isRequired: true,
+			                options: undefined
+			            },
+			    }
+		}
+
+		interface GetGuestEmitTargetEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestEmitTargetAndPayload {
+			
+				/** Source. */
+				'source'?: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSource| undefined | null
+				
+				'target': SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTarget
+		}
+
+		interface GetGuestEmitTargetAndPayloadSchema extends SpruceSchema.Schema {
+			id: 'getGuestEmitTargetAndPayload',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** Source. */
+			            'source': {
+			                label: 'Source',
+			                type: 'schema',
+			                options: {schema: SpruceSchemas.SpruceEventUtils.v2021_09_13.EventSourceSchema,}
+			            },
+			            /** . */
+			            'target': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetSchema,}
+			            },
+			    }
+		}
+
+		interface GetGuestEmitTargetAndPayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestEmitTargetAndPayloadSchema> {}
+
+	}
+
+
+	namespace SpruceSchemas.Checkin.v2023_05_07 {
+
+		
+		interface GetGuestResponsePayload {
+			
+				
+				'guest': SpruceSchemas.Spruce.v2020_07_22.Person
+		}
+
+		interface GetGuestResponsePayloadSchema extends SpruceSchema.Schema {
+			id: 'getGuestResponsePayload',
+			version: 'v2023_05_07',
+			namespace: 'Checkin',
+			name: '',
+			    fields: {
+			            /** . */
+			            'guest': {
+			                type: 'schema',
+			                isRequired: true,
+			                options: {schema: SpruceSchemas.Spruce.v2020_07_22.PersonSchema,}
+			            },
+			    }
+		}
+
+		interface GetGuestResponsePayloadEntity extends SchemaEntity<SpruceSchemas.Checkin.v2023_05_07.GetGuestResponsePayloadSchema> {}
 
 	}
 

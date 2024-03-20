@@ -48,10 +48,11 @@ const updateOrganizationSettingsEmitPayloadSchema: SpruceSchemas.Appointments.v2
 	                hint: 'This message will be shown to guests when they book an appointment.',
 	                options: undefined
 	            },
-	            /** Redirect URL. */
+	            /** Redirect URL. If you set a redirect URL, booking will be disabled entirely. */
 	            'guestBookingNoticeRedirect': {
 	                label: 'Redirect URL',
 	                type: 'text',
+	                hint: 'If you set a redirect URL, booking will be disabled entirely.',
 	                options: undefined
 	            },
 	    }
